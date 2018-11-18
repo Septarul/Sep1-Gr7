@@ -1,0 +1,436 @@
+package model;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+public class MyDate
+{
+   private int day;
+   private int month;
+   private int year;
+
+   public MyDate(int day, int month, int year)
+   {
+      set(day, month, year);
+   }
+   public MyDate() {
+      Calendar now = GregorianCalendar.getInstance();
+      this.day = now.get(Calendar.DAY_OF_MONTH);
+      this.month = now.get(Calendar.MONTH) + 1;
+      this.year = now.get(Calendar.YEAR);
+
+   }
+
+   public void set(int day, int month, int year)
+   {
+      this.day = day;
+      this.month = month;
+      this.year = year;
+
+      if (this.year < 0)
+      {
+         this.year = -this.year;
+      }
+      if (this.month < 1)
+      {
+         this.month = 1;
+      }
+      else if (this.month > 12)
+      {
+         this.month = 12;
+      }
+      if (this.day < 1)
+      {
+         this.day = 1;
+      }
+      else if (this.day > numberOfDaysInMonth())
+      {
+         this.day = numberOfDaysInMonth();
+      }
+   }
+
+   public int getDay()
+   {
+      return day;
+   }
+
+   public int getMonth()
+   {
+      return month;
+   }
+
+   public int getYear()
+   {
+      return year;
+   }
+
+   public boolean isLeapYear()
+   {
+      return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+   }
+   
+   public int numberOfDaysInMonth()
+   {
+      switch (month)
+      {
+         case 2:
+            if (isLeapYear())
+            {
+               return 29;
+            }
+            else
+            {
+               return 28;
+            }
+         case 4:
+         case 6:
+         case 9:
+         case 11:
+            return 30;
+         default:
+            return 31;
+      }
+   }
+   
+
+   public String getMonthName()
+   {
+      switch (month)
+      {
+         case 1:
+            return "January";
+         case 2:
+            return "February";
+         case 3:
+            return "March";
+         case 4:
+            return "April";
+         case 5:
+            return "May";
+         case 6:
+            return "June";
+         case 7:
+            return "July";
+         case 8:
+            return "August";
+         case 9:
+            return "September";
+         case 10:
+            return "October";
+         case 11:
+            return "November";
+         case 12:
+            return "December";
+         default:
+            return "Error in month";
+      }
+   }
+
+   public void stepForwardOneDay()
+   {
+      day++;
+      if (day > numberOfDaysInMonth())
+      {
+         day = 1;
+         month++;
+         if (month > 12)
+         {
+            month = 1;
+            year++;
+         }
+      }
+   }
+   public int daysBetween(MyDate other)
+   {
+      int count = 0;
+      if (isBefore(other))
+      {
+         MyDate counterDate = this.copy();
+
+         while (!counterDate.equals(other))
+         {
+            counterDate.stepForwardOneDay();
+            count++;
+         }
+      }
+      else
+      {
+         MyDate counterDate = other.copy();
+
+         while (!counterDate.equals(this))
+         {
+            counterDate.stepForwardOneDay();
+            count++;
+         }
+      }
+      return count;
+   }
+
+ 
+
+   public boolean isBefore(MyDate other)
+   {
+      if (this.year < other.year)
+      {
+         return true;
+      }
+      if (this.year > other.year)
+      {
+         return false;
+      }
+      if (this.month < other.month)
+      {
+         return true;
+      }
+      if (this.month > other.month)
+      {
+         return false;
+      }
+      if (this.day < other.day)
+      {
+         return true;
+      }
+      else
+      {
+         return false;
+      }
+   }
+   
+
+   public int yearsBetween(MyDate other)
+   {
+      int years = Math.abs(this.year - other.year);
+
+      if (isBefore(other))
+      {
+         if (this.month < other.month)
+         {
+            return years;
+         }
+         if (this.month > other.month)
+         {
+            return years - 1;
+         }
+         if (this.day <= other.day)
+         {
+            return years;
+         }
+         else
+         {
+            return years - 1;
+         }
+      }
+      else
+      {
+         if (other.month < this.month)
+         {
+            return years;
+         }
+         if (other.month > this.month)
+         {
+            return years - 1;
+         }
+         if (other.day <= this.day)
+         {
+            return years;
+         }
+         else
+         {
+            return years - 1;
+         }
+      }
+   }
+   
+   public String dayOfWeek() {
+      int q = day;
+      int m = month;
+      int k = year%100;
+      if(month<3)
+      {
+         year=year-1;
+      }
+      int j = year/100;
+      int h = (q+(13*(m+1)/5)+k+k/4+j/4+5*j)%7;
+      switch(h) {
+         case 0: return "Saturday";
+         case 1: return "Sunday";
+         case 2: return "Monday";
+         case 3: return "Tuesday";
+         case 4: return "Wednesday";
+         case 5: return "Thursday";
+         case 6: return "Friday";
+        default: return "Error";
+      }
+      
+      
+   } 
+   public String getAstroSign()
+   {
+      if (this.month == 3 && this.day >= 21)
+      {
+         return "Aries";
+      }
+      else if (this.month == 4 && this.day <=19) {
+         return "Aries";
+      }
+      if (this.month == 4 && this.day >= 20)
+      {
+         return "Taurus";
+      }
+      else if (this.month == 5 && this.day <=20) {
+         return "Taurus";
+      }
+      if (this.month == 5 && this.day >= 21)
+      {
+         return "Gemini";
+      }
+      else if (this.month == 6 && this.day <= 20) {
+         return "Gemini";
+      }
+      if (this.month == 6 && this.day >= 21)
+      {
+         return "Cancer";
+      }
+      else if (this.month == 7 && this.day <=22) {
+         return "Cancer";
+      }
+      if (this.month == 7 && this.day >= 23)
+      {
+         return "Leo";
+      }
+      else if (this.month == 8 && this.day <=22) {
+         return "Leo";
+      }
+      if (this.month == 8 && this.day >= 23)
+      {
+         return "Virgo";
+      }
+      else if (this.month == 9 && this.day <=22) {
+         return "Virgo";
+      }
+      if (this.month == 9 && this.day >= 23)
+      {
+         return "Libra";
+      }
+      else if (this.month == 10 && this.day <=22) {
+         return "Libra";
+      }
+      if (this.month == 10 && this.day >= 23)
+      {
+         return "Scorpio";
+      }
+      else if (this.month == 11 && this.day <=21) {
+         return "Scorpio";
+      }
+      if (this.month == 11 && this.day >= 22)
+      {
+         return "Sagittarius";
+      }
+      else if (this.month == 12 && this.day <= 21)
+      {
+         return "Sagittarius";
+      }
+      else if (this.month == 12 && this.day >=22) {
+         return "Capricorn";
+      }
+      if (this.month == 1 && this.day <= 19)
+      {
+         return "Capricorn";
+      }
+      else if (this.month == 1 && this.day >=20) {
+         return "Aquarius";
+      }
+      if (this.month == 2 && this.day <=18) {
+         return "Aquarius";
+      }
+      if (this.month == 2 && this.day >= 19)
+      {
+         return "Pisces";
+      }
+      else if (this.month == 3 && this.day <=20) {
+         return "Pisces";
+      }
+      else 
+      {
+         return "Error";
+      }
+   }
+   public String getAstroElement()
+   {
+      switch(getAstroSign())
+      {
+      case "Aries":
+      {
+         return "Fire"; 
+   }
+      case "Leo":
+      {
+         return "Fire"; 
+   }
+      case "Sagittarius":
+      {
+         return "Fire"; 
+   }
+      case "Taurus":
+      {
+         return "Earth"; 
+   }
+      case "Virgo":
+      {
+         return "Earth"; 
+   }
+      case "Capricorn":
+      {
+         return "Earth"; 
+   }
+      case "Cancer":
+      {
+         return "Water"; 
+   }
+      case "Scorpio":
+      {
+         return "Water"; 
+   }
+      case "Pisces":
+      {
+         return "Water"; 
+   }
+      case "Gemini":
+      {
+         return "Air"; 
+   }
+      case "Libra":
+      {
+         return "Air"; 
+   }
+      case "Aquarius":
+      {
+         return "Air"; 
+   }
+      default:return "Error";
+      }    
+      
+   }
+   
+   public String toString()
+   {
+      String s = day + "/";
+      s += month + "/";
+      s += year;
+      return s;
+   }
+   public boolean equals(Object obj)
+   {
+      if(!(obj instanceof MyDate))
+      {
+         return false;
+      }
+      MyDate other = (MyDate)obj;
+      return day==other.day && month==other.month&& year==other.year;
+      
+   }
+   public MyDate copy() {
+      MyDate other = new MyDate(day, month, year);
+      return other;
+   }
+   
+}
