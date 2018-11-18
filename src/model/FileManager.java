@@ -28,7 +28,7 @@ public class FileManager
    public void write() throws FileNotFoundException {
       File file = new File("test.txt");
       PrintWriter out = new PrintWriter(file);
-      String[] text= {"Nume"+","+"id"+","+"pref", "Nume2"+","+"id2"+","+"pref2",
+      String[] text= {"Marian is a stupid fucking dog with no manners!", "Nume2"+","+"id2"+","+"pref2",
                       "Nume3"+","+"id3"+","+"pref3", "Nume4"+","+"id4"+","+"pref4"
                      };
       for(int i = 0 ; i < text.length; i++){
