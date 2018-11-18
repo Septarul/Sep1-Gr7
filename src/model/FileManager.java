@@ -28,11 +28,8 @@ public class FileManager
    public void write() throws FileNotFoundException {
       File file = new File("test.txt");
       PrintWriter out = new PrintWriter(file);
-<<<<<<< HEAD
-      String[] text= {"ljhtftrd", "Nume2"+","+"id2"+","+"pref2",
-=======
+      
       String[] text= {"I dont know lols", "Nume2"+","+"id2"+","+"pref2",
->>>>>>> 5950662e623e62f3e1f215bd3f15ea98622a5ee5
                       "Nume3"+","+"id3"+","+"pref3", "Nume4"+","+"id4"+","+"pref4"
                      };
       for(int i = 0 ; i < text.length; i++){
