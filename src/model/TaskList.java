@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class TaskList
 {
    private String name;
-   private ArrayList<TaskList> list;
+   private ArrayList<Task> list;
 
    public TaskList(String name)
    {
@@ -17,7 +17,7 @@ public class TaskList
       return name;
    }
 
-   public ArrayList<EmployeeList> getList()
+   public ArrayList<Task> getList()
    {
       return list;
    }
@@ -27,7 +27,7 @@ public class TaskList
       return list.size();
    }
 
-   public void addTask(String task)
+   public void addTask(Task task)
    {
       this.list.add(task);
    }

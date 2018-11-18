@@ -4,8 +4,7 @@ import java.util.ArrayList;
 public class EmployeeList
 {
    private String name;
-
-   private ArrayList<EmployeeList> list;
+   private ArrayList<Employee> list;
 
    public EmployeeList(String name)
    {
@@ -23,7 +22,7 @@ public class EmployeeList
       return list.size();
    }
 
-   public void addEmployee(String employee)
+   public void addEmployee(Employee employee)
    {
       this.list.add(employee);
    }
@@ -50,20 +49,13 @@ public class EmployeeList
       return null;
    }
 
-   public ArrayList<EmployeeList> getList()
+   public ArrayList<Employee> getList()
    {
       return list;
    }
 
    public Employee getEmployeeByID(int id)
    {
-      for (int i = 0; i < list.size(); i++)
-      {
-         if (list.get(i).getID() == id)
-         {
-            return list.get(i);
-         }
-      }
       return null;
    }
 

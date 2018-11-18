@@ -43,9 +43,6 @@ public class WeekSchedule
 
    public ArrayList<DaySchedule> sortByDate()
    {
-      for (int i = 0; i < days.size(); i++)
-      {
-         
-      }
+      return null;
    }
 }

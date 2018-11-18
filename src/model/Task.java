@@ -10,7 +10,7 @@ public class Task
    {
       this.name = name;
       this.numberOfPeople = numberOfPeople;
-      this.employess = null;
+      this.employees = null;
    }
 
    public void setEmployees(EmployeeList employees)
