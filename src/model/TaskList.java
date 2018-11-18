@@ -1,5 +1,4 @@
 package model;
-<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class TaskList
@@ -54,10 +53,4 @@ public class TaskList
       }
       return null;
    }
-=======
-
-public class TaskList
-{
->>>>>>> 5950662e623e62f3e1f215bd3f15ea98622a5ee5
-
 }
