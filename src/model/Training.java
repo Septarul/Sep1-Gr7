@@ -2,7 +2,6 @@ package model;
 
 public class Training
 {
-   // status = 5 prefer not to do sau cannot
    private int status;
    private String task;
 
@@ -12,6 +11,7 @@ public class Training
       this.task = task;
    }
 
+   
    public int getStatus()
    {
       return status;

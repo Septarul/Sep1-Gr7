@@ -5,6 +5,7 @@ public class Task
    private String name;
    private int numberOfPeople;
    private EmployeeList employees;
+   
 
    public Task(String name, int numberOfPeople, int hoursPerDay)
    {

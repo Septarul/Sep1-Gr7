@@ -7,7 +7,7 @@ public class Employee
    private String id;
    private name name;
    private FreeDays freeDays;
-   private String preferences;
+   private Preference pref;
    private ArrayList<Training> train;
 
    public Employee(name name, String id)
@@ -15,7 +15,7 @@ public class Employee
       this.id=id;
       this.name = name;
       this.freeDays = null;
-      this.preferences = null;
+      this.pref = null;
       this.train= new ArrayList<>();
    }
 
@@ -51,11 +51,11 @@ public class Employee
 
    public String getPreferences()
    {
-      return preferences;
+      return pref;
    }
 
    public void setPreferences(String preferences)
    {
-      this.preferences = preferences;
+      this.pref = preferences;
    }
 }
