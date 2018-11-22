@@ -1,18 +1,22 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Employee
 {
+   private String id;
    private name name;
-   private String training;
-   private int freeDays;
+   private FreeDays freeDays;
    private String preferences;
-   
-   public Employee (name name, String training, int freeDays)
+   private ArrayList<Training> train;
+
+   public Employee(name name, String id)
    {
+      this.id=id;
       this.name = name;
-      this.training = training;
-      this.freeDays = freeDays;
+      this.freeDays = null;
       this.preferences = null;
+      this.train= new ArrayList<>();
    }
 
    public name getName()
@@ -25,22 +29,22 @@ public class Employee
       this.name = name;
    }
 
-   public String getTraining()
+   public Training getTraining()
    {
       return training;
    }
 
-   public void setTraining(String training)
+   public void setTraining(Training training)
    {
       this.training = training;
    }
 
-   public int getFreeDays()
+   public FreeDays getFreeDays()
    {
       return freeDays;
    }
 
-   public void setFreeDays(int freeDays)
+   public void setFreeDays(FreeDays freeDays)
    {
       this.freeDays = freeDays;
    }
@@ -54,11 +58,4 @@ public class Employee
    {
       this.preferences = preferences;
    }
-}   
-      
-   
-
-
-
-
-
+}
