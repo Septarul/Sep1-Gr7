@@ -29,14 +29,9 @@ public class Employee
       this.name = name;
    }
 
-   public Training getTraining()
+   public ArrayList<Training> getTraining()
    {
-      return training;
-   }
-
-   public void setTraining(Training training)
-   {
-      this.training = training;
+      return train;
    }
 
    public FreeDays getFreeDays()
@@ -49,13 +44,23 @@ public class Employee
       this.freeDays = freeDays;
    }
 
-   public String getPreferences()
+   public Preference getPreferences()
    {
       return pref;
    }
 
-   public void setPreferences(String preferences)
+   public void setPreferences(Preference preferences)
    {
       this.pref = preferences;
+   }
+
+   public String getId()
+   {
+      return id;
+   }
+
+   public void setId(String id)
+   {
+      this.id = id;
    }
 }
