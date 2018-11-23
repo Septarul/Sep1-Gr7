@@ -5,7 +5,7 @@ public class Training
    private int status;
    private String task;
 
-   public Training(Task task, int status)
+   public Training(String task, int status)
    {
       this.status = status;
       this.task = task;
@@ -22,12 +22,12 @@ public class Training
       this.status = status;
    }
 
-   public Task getTask()
+   public String getTask()
    {
       return task;
    }
 
-   public void setTask(Task task)
+   public void setTask(String task)
    {
       this.task = task;
    }
