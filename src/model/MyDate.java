@@ -124,7 +124,6 @@ public class MyDate
             return "Error in month";
       }
    }
-
    public void stepForwardOneDay()
    {
       day++;
@@ -164,9 +163,6 @@ public class MyDate
       }
       return count;
    }
-
- 
-
    public boolean isBefore(MyDate other)
    {
       if (this.year < other.year)
@@ -260,157 +256,7 @@ public class MyDate
          case 6: return "Friday";
         default: return "Error";
       }
-      
-      
    } 
-   public String getAstroSign()
-   {
-      if (this.month == 3 && this.day >= 21)
-      {
-         return "Aries";
-      }
-      else if (this.month == 4 && this.day <=19) {
-         return "Aries";
-      }
-      if (this.month == 4 && this.day >= 20)
-      {
-         return "Taurus";
-      }
-      else if (this.month == 5 && this.day <=20) {
-         return "Taurus";
-      }
-      if (this.month == 5 && this.day >= 21)
-      {
-         return "Gemini";
-      }
-      else if (this.month == 6 && this.day <= 20) {
-         return "Gemini";
-      }
-      if (this.month == 6 && this.day >= 21)
-      {
-         return "Cancer";
-      }
-      else if (this.month == 7 && this.day <=22) {
-         return "Cancer";
-      }
-      if (this.month == 7 && this.day >= 23)
-      {
-         return "Leo";
-      }
-      else if (this.month == 8 && this.day <=22) {
-         return "Leo";
-      }
-      if (this.month == 8 && this.day >= 23)
-      {
-         return "Virgo";
-      }
-      else if (this.month == 9 && this.day <=22) {
-         return "Virgo";
-      }
-      if (this.month == 9 && this.day >= 23)
-      {
-         return "Libra";
-      }
-      else if (this.month == 10 && this.day <=22) {
-         return "Libra";
-      }
-      if (this.month == 10 && this.day >= 23)
-      {
-         return "Scorpio";
-      }
-      else if (this.month == 11 && this.day <=21) {
-         return "Scorpio";
-      }
-      if (this.month == 11 && this.day >= 22)
-      {
-         return "Sagittarius";
-      }
-      else if (this.month == 12 && this.day <= 21)
-      {
-         return "Sagittarius";
-      }
-      else if (this.month == 12 && this.day >=22) {
-         return "Capricorn";
-      }
-      if (this.month == 1 && this.day <= 19)
-      {
-         return "Capricorn";
-      }
-      else if (this.month == 1 && this.day >=20) {
-         return "Aquarius";
-      }
-      if (this.month == 2 && this.day <=18) {
-         return "Aquarius";
-      }
-      if (this.month == 2 && this.day >= 19)
-      {
-         return "Pisces";
-      }
-      else if (this.month == 3 && this.day <=20) {
-         return "Pisces";
-      }
-      else 
-      {
-         return "Error";
-      }
-   }
-   public String getAstroElement()
-   {
-      switch(getAstroSign())
-      {
-      case "Aries":
-      {
-         return "Fire"; 
-   }
-      case "Leo":
-      {
-         return "Fire"; 
-   }
-      case "Sagittarius":
-      {
-         return "Fire"; 
-   }
-      case "Taurus":
-      {
-         return "Earth"; 
-   }
-      case "Virgo":
-      {
-         return "Earth"; 
-   }
-      case "Capricorn":
-      {
-         return "Earth"; 
-   }
-      case "Cancer":
-      {
-         return "Water"; 
-   }
-      case "Scorpio":
-      {
-         return "Water"; 
-   }
-      case "Pisces":
-      {
-         return "Water"; 
-   }
-      case "Gemini":
-      {
-         return "Air"; 
-   }
-      case "Libra":
-      {
-         return "Air"; 
-   }
-      case "Aquarius":
-      {
-         return "Air"; 
-   }
-      default:return "Error";
-      }    
-      
-   }
-   
    public String toString()
    {
       String s = day + "/";
