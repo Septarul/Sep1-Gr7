@@ -103,7 +103,7 @@ public class Employee
       this.id = id;
    }
    
-   public boolean hasFreeDay(MyDate date) {
+   public boolean hasFreeDay(Date date) {
       return freeDays.isFreeDate(date);
    }
 }

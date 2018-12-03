@@ -31,13 +31,23 @@ public class EmployeeList
    {
       this.list.remove(index);
    }
+   public void removeEmployee(Name name)
+   {
+      for (int i = 0; i <list.size(); i++)
+      {
+         if(list.get(i).getName().equals(name))
+         {
+            list.remove(i);
+         }
+      }
+   }
 
    public Employee get(int index)
    {
       return list.get(index);
    }
 
-   public Employee getEmployeeByName(String name)
+   public Employee getEmployeeByName(Name name)
    {
       for (int i = 0; i < list.size(); i++)
       {

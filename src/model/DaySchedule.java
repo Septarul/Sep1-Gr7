@@ -2,21 +2,21 @@ package model;
 
 public class DaySchedule
 {
-   private MyDate date;
+   private Date date;
    private TaskList tasks;
 
-   public DaySchedule(MyDate date, TaskList tasks)
+   public DaySchedule(Date date, TaskList tasks)
    {
       this.date = date;
       this.tasks = tasks;
    }
 
-   public MyDate getDate()
+   public Date getDate()
    {
       return date;
    }
 
-   public void setDate(MyDate date)
+   public void setDate(Date date)
    {
       this.date = date;
    }
@@ -24,5 +24,9 @@ public class DaySchedule
    public TaskList getTasks()
    {
       return tasks;
+   }
+   public void removeTasks()
+   {
+      this.tasks=null;
    }
 }

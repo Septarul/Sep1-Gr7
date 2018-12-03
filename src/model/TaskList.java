@@ -61,4 +61,30 @@ public class TaskList
       }
       return null;
    }
+   public ArrayList<Task> getTaskWithMoreEmployees()
+   {
+      ArrayList<Task> more = new ArrayList<>();
+      for (int i = 0; i < list.size(); i++)
+      {
+         Task task = list.get(i);
+         if(task.getEmployees().size()>task.getNumberOfRecomendedPeople())
+         {
+            more.add(task);
+         }
+      }
+      return more;
+   }
+   public ArrayList<Task> getTaskWithLessEmployees()
+   {
+      ArrayList<Task> less = new ArrayList<>();
+      for (int i = 0; i < list.size(); i++)
+      {
+         Task task = list.get(i);
+         if(task.getEmployees().size()<task.getNumberOfRecomendedPeople())
+         {
+            less.add(task);
+         }
+      }
+      return less;
+   }
 }

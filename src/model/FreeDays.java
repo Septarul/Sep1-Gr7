@@ -2,11 +2,11 @@ package model;
 
 public class FreeDays
 {
-   private MyDate startDate;
-   private MyDate endDate;
+   private Date startDate;
+   private Date endDate;
    private String type;
 
-   public FreeDays(MyDate start,MyDate end,String type) {
+   public FreeDays(Date start,Date end,String type) {
       if(end.isBefore(start)){
       this.startDate=start;
       this.endDate=end;
@@ -19,22 +19,22 @@ public class FreeDays
       }
   }
 
-   public MyDate getStartDate()
+   public Date getStartDate()
    {
       return startDate;
    }
 
-   public void setStartDate(MyDate startDate)
+   public void setStartDate(Date startDate)
    {
       this.startDate = startDate;
    }
 
-   public MyDate getEndDate()
+   public Date getEndDate()
    {
       return endDate;
    }
 
-   public void setEndDate(MyDate endDate)
+   public void setEndDate(Date endDate)
    {
       this.endDate = endDate;
    }
@@ -49,7 +49,7 @@ public class FreeDays
       this.type = type;
    }
    
-   public boolean isFreeDate(MyDate date) {
+   public boolean isFreeDate(Date date) {
       if(startDate.equals(endDate)){
          if(date.equals(startDate))
             return true;
@@ -59,11 +59,11 @@ public class FreeDays
       return false;
    }
    
-   public boolean isStartDate(MyDate date) {
+   public boolean isStartDate(Date date) {
       return date.equals(startDate);
    }
    
-   public boolean isEndDate(MyDate date) {
+   public boolean isEndDate(Date date) {
       return date.equals(endDate);
    }
    

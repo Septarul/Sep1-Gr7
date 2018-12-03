@@ -2,17 +2,17 @@ package model;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-public class MyDate
+public class Date
 {
    private int day;
    private int month;
    private int year;
 
-   public MyDate(int day, int month, int year)
+   public Date(int day, int month, int year)
    {
       set(day, month, year);
    }
-   public MyDate() {
+   public Date() {
       Calendar now = GregorianCalendar.getInstance();
       this.day = now.get(Calendar.DAY_OF_MONTH);
       this.month = now.get(Calendar.MONTH) + 1;
@@ -138,12 +138,12 @@ public class MyDate
          }
       }
    }
-   public int daysBetween(MyDate other)
+   public int daysBetween(Date other)
    {
       int count = 0;
       if (isBefore(other))
       {
-         MyDate counterDate = this.copy();
+         Date counterDate = this.copy();
 
          while (!counterDate.equals(other))
          {
@@ -153,7 +153,7 @@ public class MyDate
       }
       else
       {
-         MyDate counterDate = other.copy();
+         Date counterDate = other.copy();
 
          while (!counterDate.equals(this))
          {
@@ -163,7 +163,7 @@ public class MyDate
       }
       return count;
    }
-   public boolean isBefore(MyDate other)
+   public boolean isBefore(Date other)
    {
       if (this.year < other.year)
       {
@@ -192,7 +192,7 @@ public class MyDate
    }
    
 
-   public int yearsBetween(MyDate other)
+   public int yearsBetween(Date other)
    {
       int years = Math.abs(this.year - other.year);
 
@@ -266,16 +266,16 @@ public class MyDate
    }
    public boolean equals(Object obj)
    {
-      if(!(obj instanceof MyDate))
+      if(!(obj instanceof Date))
       {
          return false;
       }
-      MyDate other = (MyDate)obj;
+      Date other = (Date)obj;
       return day==other.day && month==other.month&& year==other.year;
       
    }
-   public MyDate copy() {
-      MyDate other = new MyDate(day, month, year);
+   public Date copy() {
+      Date other = new Date(day, month, year);
       return other;
    }
    
