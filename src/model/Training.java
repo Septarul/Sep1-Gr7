@@ -11,15 +11,13 @@ public class Training
       this.task = task;
    }
 
-   public void train(String task)
+   public void train()
    {
       this.status = 2;
-      this.task = task;
    }
 
-   public void completeTraining(String task)
+   public void completeTraining()
    {
-      this.task = task;
       this.status = 3;
    }
    public int getStatus()
@@ -42,9 +40,8 @@ public class Training
       }
    }
 
-   public void setUntrained(String task)
+   public void setUntrained()
    {
-      this.task = task;
       this.status = 1;
    }
 

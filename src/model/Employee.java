@@ -5,17 +5,17 @@ import java.util.ArrayList;
 public class Employee
 {
    private String id;
-   private name name;
+   private Name name;
    private FreeDays freeDays;
-   private Preference pref;
+   private ArrayList<Preference> pref;
    private ArrayList<Training> train;
 
-   public Employee(name name, String id)
+   public Employee(Name name, String id)
    {
       this.id = id;
       this.name = name;
       this.freeDays = null;
-      this.pref = null;
+      this.pref = new ArrayList<>();
       this.train = new ArrayList<>();
    }
 
@@ -32,17 +32,43 @@ public class Employee
       return completed;
    }
 
+   public ArrayList<Training> getInTraining()
+   {
+      ArrayList<Training> training = new ArrayList<>();
+      for (int i = 0; i < train.size(); i++)
+      {
+         if (train.get(i).getStatus() == 2)
+         {
+            training.add(train.get(i));
+         }
+      }
+      return training;
+   }
+   
+   public ArrayList<Training> getNotTrained()
+   {
+      ArrayList<Training> nottrain = new ArrayList<>();
+      for (int i = 0; i < train.size(); i++)
+      {
+         if (train.get(i).getStatus() == 1)
+         {
+            nottrain.add(train.get(i));
+         }
+      }
+      return nottrain;
+   }
+   
    public ArrayList<Training> getTraining()
    {
       return train;
    }
 
-   public name getName()
+   public Name getName()
    {
       return name;
    }
 
-   public void setName(name name)
+   public void setName(Name name)
    {
       this.name = name;
    }
@@ -57,14 +83,14 @@ public class Employee
       this.freeDays = freeDays;
    }
 
-   public Preference getPreferences()
+   public ArrayList<Preference> getPreferences()
    {
       return pref;
    }
 
    public void setPreferences(Preference preferences)
    {
-      this.pref = preferences;
+      pref.add(preferences);
    }
 
    public String getId()
@@ -75,5 +101,9 @@ public class Employee
    public void setId(String id)
    {
       this.id = id;
+   }
+   
+   public boolean hasFreeDay(MyDate date) {
+      return freeDays.isFreeDate(date);
    }
 }

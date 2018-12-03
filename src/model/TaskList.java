@@ -42,6 +42,14 @@ public class TaskList
       return list.get(index);
    }
 
+   public boolean isPrefValid(String task) {
+      for(int i = 0 ; i < list.size(); i++){
+         if(list.get(i).getName().equals(task))
+            return true;
+      }
+      return false;
+   }
+   
    public Task getTaskByName(String name)
    {
       for (int i = 0; i < list.size(); i++)
