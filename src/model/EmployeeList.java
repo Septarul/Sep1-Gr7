@@ -58,15 +58,54 @@ public class EmployeeList
       }
       return null;
    }
-
+   
+   public ArrayList<Employee> getEmployeesWithPref(){
+      ArrayList<Employee> list2=new ArrayList<>();
+      for (int i = 0; i < list.size(); i++)
+      {
+         if (!(list.get(i).isPrefNull()))
+         {
+            list2.add(list.get(i));
+         }
+      }
+      return list2;
+   }
+   
+   public ArrayList<Employee> getEmployeesTrained(String task){
+      ArrayList<Employee> list2=new ArrayList<>();
+      for (int i = 0; i < list.size(); i++)
+      {
+         if(!(list.get(i).hasTraining(task).isEmpty())) {
+            list2.add(list.get(i));
+      }
+         }
+      return list2;
+   }
+   
+   public ArrayList<Employee> getEmployeesInTraining(String task){
+      ArrayList<Employee> list2=new ArrayList<>();
+      for (int i = 0; i < list.size(); i++)
+      {
+         if(!(list.get(i).inTraining(task).isEmpty())) {
+            list2.add(list.get(i));
+      }
+         }
+      return list2;
+   }
+   
+   public ArrayList<Employee> getEmployeesUntained(String task){
+      ArrayList<Employee> list2=new ArrayList<>();
+      for (int i = 0; i < list.size(); i++)
+      {
+         if(!(list.get(i).unTrained(task).isEmpty())) {
+            list2.add(list.get(i));
+      }
+         }
+      return list2;
+   }
+   
    public ArrayList<Employee> getList()
    {
       return list;
    }
-
-   public Employee getEmployeeByID(int id)
-   {
-      return null;
-   }
-
 }

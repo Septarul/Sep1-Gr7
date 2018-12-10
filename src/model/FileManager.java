@@ -4,40 +4,60 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-public class FileManager
+public class FileManager implements FileManagerInterface
 {
    
-   public void loadEmployees() throws FileNotFoundException {
-      File file=new File("test.txt");
-      Scanner in=new Scanner(file);
-      
-      while(in.hasNext()) {
-         String line=in.nextLine();
-         String[] token=line.split(",");
-         String nume=token[0].trim();
-         String id=token[1].trim();
-         String pref=token[2].trim();
-         int x= Integer.parseInt(token[3].trim());
-         int a=x+12;
-         System.out.println(nume+"-"+id+"-"+pref+"-"+x+"-"+a);
-      }
-      in.close();
-      System.out.println("end of reading file: "+ file.getAbsolutePath());
+
+   @Override 
+   public Schedule loadFromFile(String filename) throws Exception{ 
+   return loadFromFile(filename);
    }
    
-   public void write() throws FileNotFoundException {
-      File file = new File("test.txt");
+
+   @Override 
+   public void saveAllToFile(Schedule sch, String filename) throws Exception{
+         saveAllToTextFile(sch, filename);
+      }
+
+   private void saveAllToTextFile(Schedule list, String filename) throws FileNotFoundException{
+      File file= new File(filename);
       PrintWriter out = new PrintWriter(file);
-      
-      String[] text= {"I dont know lols", "Nume2"+","+"id2"+","+"pref2",
-                      "Nume3"+","+"id3"+","+"pref3", "Nume4"+","+"id4"+","+"pref4"
-                     };
-      for(int i = 0 ; i < text.length; i++){
-         out.println(text[i]);
+      // Open file
+      for (int i = 0; i < list.size(); i++){
+         int grade = list.getGrade(i).getGrade();
+         String course = list.getGrade(i).getCourse();
+         out.println(course + "; " + grade);
+         // print to file
+         }
+         out.close(); 
+         // Close file
+         }
+   
+   private Schedule loadFromTextFile(String filename)throws FileNotFoundException{
+      ///ArrayList<Grade> grades = new ArrayList<>();
+      File file= new File(filename);
+      Scanner in = new Scanner(file);
+      while (in.hasNext()){
+         String line = in.nextLine();
+      // Read a line
+      String[] token = line.split(";");
+      // Split the line
+      String course = token[0].trim();
+      int grade = Integer.parseInt(token[1].trim());
+      ///grades.add(new Grade(grade, course));
       }
-      out.flush();
+      in.close();
+      // Close the file
+      ///GradeList list = new GradeList(grades.size());
+      /// for (int i = 0; i < grades.size(); i++){
+      ///   list.addGrade(grades.get(i));
+      ///   }
+      ///return list;
+         }
       
-      out.close();
-      }
    }
+      
+   
+   
+
 

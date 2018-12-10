@@ -7,16 +7,9 @@ public class FreeDays
    private String type;
 
    public FreeDays(Date start,Date end,String type) {
-      if(end.isBefore(start)){
-      this.startDate=start;
-      this.endDate=end;
-      this.type=".,--!";
-      }
-      else {
       this.startDate=start;
       this.endDate=end;
       this.type=type;
-      }
   }
 
    public Date getStartDate()
@@ -66,9 +59,4 @@ public class FreeDays
    public boolean isEndDate(Date date) {
       return date.equals(endDate);
    }
-   
-   
-   
-   
-   
 }
