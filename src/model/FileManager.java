@@ -9,7 +9,7 @@ public class FileManager implements FileManagerInterface
    
 
    @Override 
-   public Schedule loadFromFile(String filename) throws Exception{ 
+   public WeekSchedule loadFromFile(String filename) throws Exception{ 
    return loadFromFile(filename);
    }
    
@@ -22,15 +22,12 @@ public class FileManager implements FileManagerInterface
    private void saveAllToTextFile(Schedule list, String filename) throws FileNotFoundException{
       File file= new File(filename);
       PrintWriter out = new PrintWriter(file);
-      // Open file
       for (int i = 0; i < list.size(); i++){
          int grade = list.getGrade(i).getGrade();
          String course = list.getGrade(i).getCourse();
          out.println(course + "; " + grade);
-         // print to file
          }
          out.close(); 
-         // Close file
          }
    
    private Schedule loadFromTextFile(String filename)throws FileNotFoundException{
@@ -54,7 +51,6 @@ public class FileManager implements FileManagerInterface
       ///   }
       ///return list;
          }
-      
    }
       
    

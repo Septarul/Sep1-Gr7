@@ -6,6 +6,13 @@ public class EmployeeList
    private String name;
    private ArrayList<Employee> list;
 
+   
+   public EmployeeList()
+   {
+      this.list = new ArrayList<>();
+      this.name = null;
+   }
+   
    public EmployeeList(String name)
    {
       this.list = new ArrayList<>();

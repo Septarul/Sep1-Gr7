@@ -18,6 +18,17 @@ public String getFormalName()
 {
    return lastName+", " +firstName;
 }
+
+public boolean equals(Object obj)
+{
+   if(!(obj instanceof Name))
+   {
+      return false;
+   }
+   Name other = (Name)obj;
+   return firstName.equals(other.firstName) && lastName.equals(other.lastName);
+}
+
 public String toString()
 {
    return getFullName();

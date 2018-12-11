@@ -51,4 +51,15 @@ public class Task
    {
       employees.removeEmployee(employee);
    }
+   
+   public boolean equals(Object obj)
+   {
+      if(!(obj instanceof Task))
+      {
+         return false;
+      }
+      Task other = (Task)obj;
+      return name.equals(other.name);
+      
+   }
 }

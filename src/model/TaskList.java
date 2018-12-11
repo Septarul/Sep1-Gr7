@@ -6,6 +6,12 @@ public class TaskList
    private String name;
    private ArrayList<Task> list;
 
+   public TaskList()
+   {
+      this.list = new ArrayList<>();
+      this.name = null;
+   }
+   
    public TaskList(String name)
    {
       this.list = new ArrayList<>();
@@ -31,7 +37,14 @@ public class TaskList
    {
       this.list.add(task);
    }
-
+   
+   public void removeTask(Task t) {
+      for (int i=0; i<list.size();i++) {
+         if(list.get(i).equals(t))
+            list.remove(i);
+      }
+   }
+   
    public void removeTask(int index)
    {
       this.list.remove(index);

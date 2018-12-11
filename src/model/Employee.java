@@ -56,6 +56,10 @@ public class Employee
       return nottrain;
    }
    
+   public void setTraining(Training t) {
+      train.add(t);
+   }
+   
    public ArrayList<Training> getTraining()
    {
       return train;

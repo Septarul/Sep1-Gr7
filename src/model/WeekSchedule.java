@@ -6,6 +6,12 @@ public class WeekSchedule
    private ArrayList<DaySchedule> days;
    private String weekType;
 
+   public WeekSchedule()
+   {
+      this.weekType = null;
+      this.days = new ArrayList<>();
+   }
+   
    public WeekSchedule(String weekType)
    {
       this.weekType = weekType;

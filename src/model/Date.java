@@ -257,6 +257,7 @@ public class Date
         default: return "Error";
       }
    } 
+   
    public String toString()
    {
       String s = day + "/";
@@ -264,6 +265,7 @@ public class Date
       s += year;
       return s;
    }
+   
    public boolean equals(Object obj)
    {
       if(!(obj instanceof Date))
@@ -271,9 +273,9 @@ public class Date
          return false;
       }
       Date other = (Date)obj;
-      return day==other.day && month==other.month&& year==other.year;
-      
+      return day==other.day && month==other.month&& year==other.year;   
    }
+   
    public Date copy() {
       Date other = new Date(day, month, year);
       return other;
