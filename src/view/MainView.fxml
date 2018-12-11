@@ -26,17 +26,19 @@
                         </Label>
                         <VBox alignment="BOTTOM_LEFT" prefHeight="446.0" prefWidth="133.0">
                            <children>
-                              <VBox prefHeight="358.0" prefWidth="133.0">
+                              <VBox prefHeight="269.0" prefWidth="133.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="136.0" text="Log in">
+                                    <Button fx:id="login" mnemonicParsing="false" prefHeight="41.0" prefWidth="136.0" text="Log in">
                                        <VBox.margin>
                                           <Insets />
                                        </VBox.margin>
                                     </Button>
                                  </children>
                               </VBox>
-                              <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" text="Show" />
-                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Search" />
+                              <Button fx:id="tasklist" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" text="Tasks List" />
+                              <Button fx:id="employees" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" text="Employees List" />
+                              <Button fx:id="show" mnemonicParsing="false" prefHeight="44.0" prefWidth="135.0" text="Show" />
+                              <Button fx:id="search" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Search" />
                            </children>
                         </VBox>
                      </children>
@@ -49,10 +51,10 @@
                      <children>
                         <Pane prefHeight="61.0" prefWidth="554.0">
                            <children>
-                              <DatePicker layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="269.0" />
+                              <DatePicker fx:id="picker" layoutX="133.0" layoutY="10.0" prefHeight="41.0" prefWidth="269.0" />
                            </children>
                         </Pane>
-                        <TableView prefHeight="442.0" prefWidth="530.0">
+                        <TableView fx:id="table" prefHeight="442.0" prefWidth="530.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="Day" />
                             <TableColumn prefWidth="476.0" text="Tasks" />
