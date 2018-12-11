@@ -8,14 +8,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="64.0" prefWidth="600.0">
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" layoutX="196.0" layoutY="7.0" prefHeight="50.0" prefWidth="209.0" text="Add Employee" />
+                  <Label alignment="CENTER" layoutX="196.0" layoutY="7.0" prefHeight="50.0" prefWidth="209.0" text="Add employee on task" />
                </children>
             </Pane>
          </children>
@@ -24,7 +23,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <MenuButton alignment="CENTER" layoutX="165.0" layoutY="27.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="271.0" text="Select Employee">
+                  <MenuButton fx:id="selector" alignment="CENTER" layoutX="165.0" layoutY="27.0" mnemonicParsing="false" onAction="#selectEmployee" prefHeight="43.0" prefWidth="271.0" text="Select Employee">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -39,7 +38,7 @@
             <Pane prefHeight="169.0" prefWidth="600.0">
                <children>
                   <Label layoutX="49.0" layoutY="39.0" prefHeight="43.0" prefWidth="122.0" text="Search Employee:" />
-                  <TextField layoutX="181.0" layoutY="39.0" prefHeight="43.0" prefWidth="336.0" />
+                  <TextField fx:id="employee" layoutX="181.0" layoutY="39.0" prefHeight="43.0" prefWidth="336.0" />
                </children>
             </Pane>
          </children>
@@ -48,8 +47,8 @@
          <children>
             <Pane prefHeight="55.0" prefWidth="600.0">
                <children>
-                  <Button layoutX="496.0" layoutY="7.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="99.0" text="Add" />
-                  <Button layoutX="14.0" layoutY="7.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="99.0" text="Back" />
+                  <Button fx:id="add" layoutX="496.0" layoutY="7.0" mnemonicParsing="false" onAction="#addpressed" prefHeight="43.0" prefWidth="99.0" text="Add" />
+                  <Button fx:id="back" layoutX="14.0" layoutY="7.0" mnemonicParsing="false" onAction="#backpressed" prefHeight="43.0" prefWidth="99.0" text="Back" />
                </children>
             </Pane>
          </children>

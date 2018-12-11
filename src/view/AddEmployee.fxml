@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="345.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="54.0" prefWidth="600.0">
@@ -34,7 +33,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="26.0" layoutY="198.0" prefHeight="41.0" prefWidth="560.0" text="error">
+                  <Label fx:id="error" layoutX="26.0" layoutY="198.0" prefHeight="41.0" prefWidth="560.0" text="error">
                      <font>
                         <Font name="Bell MT" size="16.0" />
                      </font>
@@ -50,10 +49,10 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextArea layoutX="100.0" layoutY="130.0" prefHeight="69.0" prefWidth="485.0" />
-                  <TextField layoutX="100.0" layoutY="6.0" prefHeight="25.0" prefWidth="485.0" />
-                  <TextField layoutX="100.0" layoutY="40.0" prefHeight="25.0" prefWidth="485.0" />
-                  <TextField layoutX="116.0" layoutY="77.0" prefHeight="25.0" prefWidth="469.0" />
+                  <TextArea fx:id="preferences" layoutX="100.0" layoutY="130.0" prefHeight="69.0" prefWidth="485.0" />
+                  <TextField fx:id="firstName" layoutX="100.0" layoutY="6.0" prefHeight="25.0" prefWidth="485.0" />
+                  <TextField fx:id="lastName" layoutX="100.0" layoutY="40.0" prefHeight="25.0" prefWidth="485.0" />
+                  <TextField fx:id="tasks" layoutX="116.0" layoutY="77.0" prefHeight="25.0" prefWidth="469.0" />
                </children>
             </Pane>
          </children>
@@ -62,8 +61,8 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="495.0" layoutY="4.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="91.0" text="Add" />
-                  <Button layoutX="14.0" layoutY="4.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="91.0" text="Cancel" />
+                  <Button fx:id="add" layoutX="495.0" layoutY="4.0" mnemonicParsing="false" onAction="#addpressed" prefHeight="41.0" prefWidth="91.0" text="Add" />
+                  <Button fx:id="cancel" layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onAction="#cancelpressed" prefHeight="41.0" prefWidth="91.0" text="Cancel" />
                </children>
             </Pane>
          </children>
