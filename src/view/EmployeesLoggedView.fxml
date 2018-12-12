@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="478.0">
@@ -17,7 +16,7 @@
                <children>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label alignment="CENTER" layoutX="127.0" layoutY="11.0" prefHeight="43.0" prefWidth="212.0" text="Task - Day" />
+                        <Label fx:id="day" alignment="CENTER" layoutX="127.0" layoutY="11.0" prefHeight="43.0" prefWidth="212.0" text="Task - Day" />
                      </children>
                   </Pane>
                </children>
@@ -28,22 +27,22 @@
                      <children>
                         <VBox alignment="BOTTOM_LEFT" prefHeight="306.0" prefWidth="94.0">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="123.0" text="Add Employee" />
-                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="123.0" text="Remove Employee" />
+                              <Button mnemonicParsing="false" onAction="#addEmplpressed" prefHeight="40.0" prefWidth="123.0" text="Add Employee" />
+                              <Button mnemonicParsing="false" onAction="#removepressed" prefHeight="40.0" prefWidth="123.0" text="Remove Employee" />
                            </children>
                         </VBox>
                         <VBox alignment="BOTTOM_LEFT" prefHeight="225.0" prefWidth="94.0">
                            <children>
-                              <Button alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="123.0" text="Back" />
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#backpressed" prefHeight="40.0" prefWidth="123.0" text="Back" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
                   <VBox prefHeight="532.0" prefWidth="346.0">
                      <children>
-                        <TableView prefHeight="531.0" prefWidth="346.0">
+                        <TableView fx:id="table" prefHeight="531.0" prefWidth="346.0">
                            <columns>
-                              <TableColumn prefWidth="344.0" text="Employees" />
+                              <TableColumn fx:id="emplcolumn" prefWidth="344.0" text="Employees" />
                            </columns>
                         </TableView>
                      </children>

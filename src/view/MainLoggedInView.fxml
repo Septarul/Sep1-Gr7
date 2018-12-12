@@ -27,18 +27,20 @@
                            <children>
                               <VBox prefHeight="298.0" prefWidth="138.0">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Add Day" />
-                                    <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Add Task" />
-                                    <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Add Employee" />
+                                    <Button mnemonicParsing="false" onAction="#addDaypressed" prefHeight="45.0" prefWidth="136.0" text="Add Day" />
+                                    <Button mnemonicParsing="false" onAction="#addTaskpressed" prefHeight="45.0" prefWidth="136.0" text="Add Task" />
+                                    <Button mnemonicParsing="false" onAction="#addEmplpressed" prefHeight="45.0" prefWidth="136.0" text="Add Employee" />
                                     <VBox alignment="CENTER" prefHeight="157.0" prefWidth="138.0">
                                        <children>
-                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Show" />
+                                          <Button mnemonicParsing="false" onAction="#taskspressed" prefHeight="45.0" prefWidth="136.0" text="Tasks List" />
+                                          <Button mnemonicParsing="false" onAction="#emplpressed" prefHeight="45.0" prefWidth="136.0" text="Employees List" />
+                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showpressed" prefHeight="45.0" prefWidth="136.0" text="Show" />
                                        </children>
                                     </VBox>
-                                    <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Search" />
+                                    <Button mnemonicParsing="false" onAction="#searchpressed" prefHeight="45.0" prefWidth="136.0" text="Search" />
                                  </children>
                               </VBox>
-                              <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Log Out" />
+                              <Button mnemonicParsing="false" onAction="#logoutpressed" prefHeight="45.0" prefWidth="136.0" text="Log Out" />
                            </children>
                         </VBox>
                      </children>
@@ -51,13 +53,13 @@
                      <children>
                         <Pane prefHeight="61.0" prefWidth="554.0">
                            <children>
-                              <DatePicker layoutX="131.0" layoutY="11.0" prefHeight="30.0" prefWidth="294.0" />
+                              <DatePicker fx:id="datepicker" layoutX="131.0" layoutY="11.0" onAction="#pickerpressed" prefHeight="30.0" prefWidth="294.0" />
                            </children>
                         </Pane>
-                        <TableView prefHeight="383.0" prefWidth="556.0">
+                        <TableView fx:id="table" prefHeight="383.0" prefWidth="556.0">
                            <columns>
-                              <TableColumn prefWidth="75.0" text="Day" />
-                              <TableColumn prefWidth="480.0" text="Tasks" />
+                              <TableColumn fx:id="daycolumn" prefWidth="75.0" text="Day" />
+                              <TableColumn fx:id="taskscolumn" prefWidth="480.0" text="Tasks" />
                            </columns>
                         </TableView>
                      </children>
