@@ -11,7 +11,7 @@ public class GUI extends Application implements GuiInterface
    private Controller controller;
    private Stage primaryStage;
 
-   private ViewControllerMain viewControllerMainView;
+   private MainView mainView;
    private ViewControllerSearch viewControllerSearchView;
    private ViewControllerAddEmployee viewControllerAddEmployee;
    private ViewControllerAddTask viewControllerAddTask;
@@ -31,7 +31,7 @@ public class GUI extends Application implements GuiInterface
       }
    }
 
-   @Override // GradeListView
+   @Override 
    public void start(Controller controller)
    {
       this.controller = controller;
@@ -55,9 +55,9 @@ public class GUI extends Application implements GuiInterface
       }
       this.primaryStage = primaryStage;
 
-      setWindow("LIST");
+      setWindow("MAIN");
    }
-
+/*??
    public void setWindow(String type)
    {
       this.currentViewControllerID = type;
@@ -65,19 +65,19 @@ public class GUI extends Application implements GuiInterface
       {
          switch (currentViewControllerID)
          {
-            case "LIST":
-               if (viewControllerCustomers == null)
+            case "MAIN":
+               if (mainView == null)
                {
-                  viewControllerCustomers = new ViewControllerCustomers(this);
+                  mainView = new MainView(this);
                }
                else
                {
-                  viewControllerCustomers.initialize();
+                  mainView.initialize();
                }
-               primaryStage.setScene(viewControllerCustomers.getScene());
-               primaryStage.setTitle(viewControllerCustomers.getTitle());
+               primaryStage.setScene(mainView.getScene());
+               primaryStage.setTitle(mainView.getTitle());
                break;
-            case "ADD":
+            case "SEARCH":
                if (viewControllerEditCustomer == null)
                {
                   viewControllerEditCustomer = new ViewControllerEditCustomer(
@@ -86,6 +86,19 @@ public class GUI extends Application implements GuiInterface
                primaryStage.setScene(viewControllerEditCustomer.getScene());
                primaryStage.setTitle(viewControllerEditCustomer.getTitle());
                break;
+            case "SHOW":
+               if (viewControllerEditCustomer == null)
+               {
+                  viewControllerEditCustomer = new ViewControllerEditCustomer(
+                        this);
+               }
+               primaryStage.setScene(viewControllerEditCustomer.getScene());
+               primaryStage.setTitle(viewControllerEditCustomer.getTitle());
+               break;
+            case "ELIST":
+            case "TLIST":
+            case "LOGIN":
+            case "SHOW":
          }
          primaryStage.show();
       }
@@ -93,15 +106,15 @@ public class GUI extends Application implements GuiInterface
       {
       }
    }
-
-   @Override // GradeListView
+*/
+   @Override
    public Object[] getInput(String type)
    {
       switch (currentViewControllerID)
       {
-         case "LIST":
-            return viewControllerCustomers.getInput(type);
-         case "ADD":
+         case "MAIN":
+            return mainView.getInput(type);
+         case "SEARCH":
           return viewControllerEditCustomer.getInput(type);
       }
       return null;
