@@ -56,8 +56,8 @@
                         </Pane>
                         <TableView fx:id="table" prefHeight="442.0" prefWidth="530.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Day" />
-                            <TableColumn prefWidth="476.0" text="Tasks" />
+                            <TableColumn fx:id="dayColumn" prefWidth="75.0" text="Day" />
+                            <TableColumn fx:id="taskColumn" prefWidth="476.0" text="Tasks" />
                           </columns>
                         </TableView>
                      </children>
