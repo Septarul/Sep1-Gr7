@@ -74,7 +74,6 @@ public class ModelManager implements Model
       list.add(tasks.getTaskByName(t.getName()));
       return list;
    }
-<<<<<<< HEAD
    
    public DaySchedule getDaySchedule(int i) {
      return schedule.getDay(i);
@@ -87,11 +86,4 @@ public class ModelManager implements Model
    public String getTasks() {
       return tasks.getTasks();
    }
-   
-   
-   
-   
-   
-=======
->>>>>>> 2cca1a884251fb873e039d147f706b588e183a24
 }
