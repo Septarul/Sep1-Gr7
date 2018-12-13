@@ -18,16 +18,16 @@ public class FileManager implements FileManagerInterface
    @Override 
    public void saveAllToFile(WeekSchedule plan, String filename) throws Exception{
          saveAllToTextFile(plan, filename);
-      }
+   }
 
    private void saveAllToTextFile(WeekSchedule list, String filename) throws FileNotFoundException{
       File file= new File(filename);
       PrintWriter out = new PrintWriter(file);
-      for (int i = 0; i < list.size(); i++){
+      /*for (int i = 0; i < list.size(); i++){
          int grade = list.getGrade(i).getGrade();
          String course = list.getGrade(i).getCourse();
          out.println(course + "; " + grade);
-         }
+         }*/
          out.close(); 
          }
    

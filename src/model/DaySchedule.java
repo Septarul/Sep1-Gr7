@@ -25,8 +25,19 @@ public class DaySchedule
    {
       return tasks;
    }
+
    public void removeTasks()
    {
-      this.tasks=null;
+      this.tasks = null;
+   }
+
+   public void addTaskList(TaskList tasks)
+   {
+      this.tasks = tasks;
+   }
+
+   public String getDayOfTheWeek()
+   {
+      return date.dayOfWeek();
    }
 }
