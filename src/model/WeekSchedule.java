@@ -18,6 +18,10 @@ public class WeekSchedule
       this.days = new ArrayList<>();
    }
 
+   public int size()
+   {
+      return days.size();
+   }
    public int getWeekNumber()
    {
       return number;

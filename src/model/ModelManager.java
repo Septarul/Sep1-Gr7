@@ -15,7 +15,7 @@ public class ModelManager implements Model
    {
       this.tasks= file.loadTaskListFromFile("src/tasks.txt");
       this.employees= file.loadEmployeeListFromFile("src/employees.txt",tasks);
-      
+      this.schedule=file.loadWeekFromFile("src/51.2018", this.employees);
    }
    
 
@@ -25,7 +25,7 @@ public class ModelManager implements Model
          if(!(user.equals(list[i].getUser()))&& !(password.equals(list[i].getPassword()))) {
             return "Incorrect passowrd or username";
          }
-         else if()
+         //else if()
          {
             
          }
@@ -65,9 +65,9 @@ public class ModelManager implements Model
       e.setFreeDays(free);
    }
    
-//public void addTraining(Training t, Employee e) {
-  //    e.setTraining(t);
-   //}
+public void addTraining(Training t, Employee e) {
+      //e.setTraining(t);
+   }
    
    public Employee getEmployee(Name name) {
    return employees.getEmployeeByName(name);  
