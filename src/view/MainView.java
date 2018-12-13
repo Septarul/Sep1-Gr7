@@ -50,7 +50,7 @@ public class MainView
          e.printStackTrace();
       }
    }
-  /* ??
+  
    public void initialize()
    {
       dayColumn.setCellValueFactory(
@@ -58,29 +58,8 @@ public class MainView
       taskColumn.setCellValueFactory(
             cellData -> cellData.getValue().getTasksProperty());
 
-      taskColumn.setCellFactory(col -> {
-         TableCell<MainViewModel, Task> cell = new TableCell<ViewModelCustomer, Task>();
-         {
-            @Override
-            protected void updateItem(Task item, boolean empty)
-            {
-               super.updateItem(item, empty);
-               if (empty)
-               {
-                  setText(null);
-               }
-               else
-               {
-                  this.setText(
-                        DateTimeFormatter.ofPattern("dd/MM/yyyy").format(item));
-               }
-            }
-         };
-         return cell;
-      });
-
       ArrayList<Object[]> data = gui.getController()
-            .executeGetSimpleInfoForAllCustomers();
+            .executeGetDayInfo();
       ObservableList<ViewModelCustomer> tableData = FXCollections
             .observableArrayList();
 
@@ -88,17 +67,11 @@ public class MainView
       {
          String name = data.get(i)[0] + ""; 
          LocalDate date = (LocalDate) data.get(i)[1]; 
-         String gender = data.get(i)[2] + ""; 
-         Long phone = ((Long)(data.get(i)[3])).longValue(); 
-         tableData.add(new ViewModelCustomer(name, gender, date, phone));
+         tableData.add(new ViewModelCustomer(name, gender));
       }
       customerTable.setItems(tableData);
 
-      customerTable.getSelectionModel()
-            .setSelectionMode(SelectionMode.MULTIPLE);
-      customerTable.getSelectionModel().setCellSelectionEnabled(false);
    }
-   */
    
    public Scene getScene()
    {

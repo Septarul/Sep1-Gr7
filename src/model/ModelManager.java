@@ -25,6 +25,10 @@ public class ModelManager implements Model
          if(!(user.equals(list[i].getUser()))&& !(password.equals(list[i].getPassword()))) {
             return "Incorrect passowrd or username";
          }
+         else if()
+         {
+            
+         }
       }
       return null;
    }

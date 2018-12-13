@@ -38,8 +38,6 @@ public class FileManager implements FileManagerInterface
       while (in.hasNext()){
          String line = in.nextLine();
       String[] token = line.split(";");
-      
-      
       }
       in.close();
 

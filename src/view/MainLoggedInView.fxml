@@ -23,24 +23,21 @@
                               <Font name="Bookman Old Style" size="30.0" />
                            </font>
                         </Label>
-                        <VBox alignment="BOTTOM_LEFT" prefHeight="379.0" prefWidth="138.0">
+                        <VBox prefHeight="378.0" prefWidth="138.0">
                            <children>
-                              <VBox prefHeight="298.0" prefWidth="138.0">
+                              <VBox prefHeight="381.0" prefWidth="138.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#addDaypressed" prefHeight="45.0" prefWidth="136.0" text="Add Day" />
-                                    <Button mnemonicParsing="false" onAction="#addTaskpressed" prefHeight="45.0" prefWidth="136.0" text="Add Task" />
-                                    <Button mnemonicParsing="false" onAction="#addEmplpressed" prefHeight="45.0" prefWidth="136.0" text="Add Employee" />
-                                    <VBox alignment="CENTER" prefHeight="157.0" prefWidth="138.0">
-                                       <children>
-                                          <Button mnemonicParsing="false" onAction="#taskspressed" prefHeight="45.0" prefWidth="136.0" text="Tasks List" />
-                                          <Button mnemonicParsing="false" onAction="#emplpressed" prefHeight="45.0" prefWidth="136.0" text="Employees List" />
-                                          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showpressed" prefHeight="45.0" prefWidth="136.0" text="Show" />
-                                       </children>
-                                    </VBox>
-                                    <Button mnemonicParsing="false" onAction="#searchpressed" prefHeight="45.0" prefWidth="136.0" text="Search" />
+                                    <Button mnemonicParsing="false" onAction="#addDaypressed" prefHeight="41.5" prefWidth="136.0" text="Add Day" />
+                                    <Button mnemonicParsing="false" onAction="#addTaskpressed" prefHeight="41.5" prefWidth="136.0" text="Add Task" />
+                                    <Button mnemonicParsing="false" onAction="#addEmplpressed" prefHeight="41.5" prefWidth="136.0" text="Add Employee" />
+                                    <Button fx:id="admin" mnemonicParsing="false" onAction="#addAdminpressed" prefHeight="41.5" prefWidth="136.0" text="Add Administrator" />
+                                    <Button mnemonicParsing="false" onAction="#emplpressed" prefHeight="41.5" prefWidth="136.0" text="Employees List" />
+                                    <Button mnemonicParsing="false" onAction="#taskspressed" prefHeight="41.5" prefWidth="136.0" text="Tasks List" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showpressed" prefHeight="41.5" prefWidth="136.0" text="Show" />
+                                    <Button mnemonicParsing="false" onAction="#searchpressed" prefHeight="41.5" prefWidth="136.0" text="Search" />
+                                    <Button mnemonicParsing="false" onAction="#logoutpressed" prefHeight="41.5" prefWidth="136.0" text="Log Out" />
                                  </children>
                               </VBox>
-                              <Button mnemonicParsing="false" onAction="#logoutpressed" prefHeight="45.0" prefWidth="136.0" text="Log Out" />
                            </children>
                         </VBox>
                      </children>
