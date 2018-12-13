@@ -60,14 +60,14 @@ public class MainView
 
       ArrayList<Object[]> data = gui.getController()
             .executeGetDayInfo();
-      ObservableList<ViewModelCustomer> tableData = FXCollections
-            .observableArrayList();
+      ObservableList<MainViewModel> tableData = FXCollections
+           .observableArrayList();
 
-      for (int i = 0; i < data.size(); i++)
+      for (int i = 0; i < 2; i++)
       {
-         String name = data.get(i)[0] + ""; 
-         LocalDate date = (LocalDate) data.get(i)[1]; 
-         tableData.add(new ViewModelCustomer(name, gender));
+         String day = data.get(i)[0] + ""; 
+         String tasks =(String) data.get(i)[1]; 
+         tableData.add(new MainViewModel(day,tasks));
       }
       customerTable.setItems(tableData);
 

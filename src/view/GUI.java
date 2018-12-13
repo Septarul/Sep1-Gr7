@@ -19,7 +19,7 @@ public class GUI extends Application implements GuiInterface
    private ViewControllerDay viewControllerDay;
    private ViewControllerEmployeesLogged viewControllerEmplyeesLogged;
    private ViewControllerMainLogged viewControllerMainLogged;
-   private String currentViewControllerID;
+   private String currentViewID;
 
    private static GUI me;
 
@@ -57,13 +57,13 @@ public class GUI extends Application implements GuiInterface
 
       setWindow("MAIN");
    }
-/*??
+   /*
    public void setWindow(String type)
    {
-      this.currentViewControllerID = type;
+      this.currentViewID = type;
       try
       {
-         switch (currentViewControllerID)
+         switch (currentViewID)
          {
             case "MAIN":
                if (mainView == null)
@@ -110,7 +110,7 @@ public class GUI extends Application implements GuiInterface
    @Override
    public Object[] getInput(String type)
    {
-      switch (currentViewControllerID)
+      switch (currentViewID)
       {
          case "MAIN":
             return mainView.getInput(type);
