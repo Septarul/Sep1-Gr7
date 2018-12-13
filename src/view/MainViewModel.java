@@ -9,13 +9,13 @@ import model.Task;
 public class MainViewModel
 {
    private StringProperty dayProperty;
-   private ObjectProperty<Task> tasksProperty;
+   private StringProperty tasksProperty;
    
    
-   public MainViewModel(String day, Task tasks)
+   public MainViewModel(String day, String tasks)
    {
       dayProperty = new SimpleStringProperty(day);
-      tasksProperty = new SimpleObjectProperty<>(tasks);
+      tasksProperty = new SimpleStringProperty(tasks);
    }
    
    public String getDay()
@@ -23,7 +23,7 @@ public class MainViewModel
       return dayProperty.getValue();
    }
    
-   public Task getTasks()
+   public String getTasks()
    {
       return tasksProperty.getValue();
    }
@@ -33,7 +33,7 @@ public class MainViewModel
       return dayProperty;
    }
    
-   public ObjectProperty<Task> getTasksProperty()
+   public StringProperty getTasksProperty()
    {
       return tasksProperty;
    }
