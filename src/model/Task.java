@@ -31,8 +31,12 @@ public class Task
    {
       return name;
    }
+<<<<<<< HEAD
    
    public void addEmmployee(Employee employee)
+=======
+   public void addEmmployees(Employee employee)
+>>>>>>> c5787bf1673a06a3061e9ffa08b222b3d27c3846
    {
       employees.addEmployee(employee);
    }
