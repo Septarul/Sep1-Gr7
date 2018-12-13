@@ -18,5 +18,7 @@ public interface Model
    public DaySchedule getDaySchedule(int i);
    public int numberOfEmployees();
    public String getTasks();
+   public abstract void addTraining(Training t, Employee e);
+
    
 }

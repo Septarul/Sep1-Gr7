@@ -3,14 +3,12 @@ package model;
 public class Task
 {
    private String name;
-   private int recomendedSize;
    private EmployeeList employees;
    
 
-   public Task(String name, int recomendedSize, int hoursPerDay)
+   public Task(String name)
    {
       this.name = name;
-      this.recomendedSize = recomendedSize;
       this.employees = null;
    }
 
@@ -34,15 +32,6 @@ public class Task
       return name;
    }
 
-   public void setNumberOfRecomendedPeople(int recomendedSize)
-   {
-      this.recomendedSize = recomendedSize;
-   }
-
-   public int getNumberOfRecomendedPeople()
-   {
-      return recomendedSize;
-   }
    public void addEmmployees(Employee employee)
    {
       employees.addEmployee(employee);

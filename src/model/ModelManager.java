@@ -2,19 +2,19 @@ package model;
 
 import java.util.ArrayList;
 
-public class ModelManager implements Model
+public class ModelManager implements Model 
 {
    
+   private FileManagerInterface file;
    private EmployeeList employees;
    private WeekSchedule schedule;
    private TaskList tasks;
    
    
-   public ModelManager()
+   public ModelManager() throws Exception
    {
-      this.employees= new EmployeeList();
-      this.schedule= new WeekSchedule();
-      this.tasks= new TaskList();
+      this.tasks= file.loadTaskListFromFile("src/tasks.txt");
+      this.employees= file.loadEmployeeListFromFile("src/employees.txt",tasks);
       
    }
    
