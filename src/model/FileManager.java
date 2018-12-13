@@ -15,22 +15,22 @@ public class FileManager implements FileManagerInterface
    
 
    @Override 
-   public void saveAllToFile(Schedule sch, String filename) throws Exception{
+   public void saveAllToFile(WeekSchedule sch, String filename) throws Exception{
          saveAllToTextFile(sch, filename);
       }
 
-   private void saveAllToTextFile(Schedule list, String filename) throws FileNotFoundException{
+   private void saveAllToTextFile(WeekSchedule list, String filename) throws FileNotFoundException{
       File file= new File(filename);
       PrintWriter out = new PrintWriter(file);
-      for (int i = 0; i < list.size(); i++){
+      /*for (int i = 0; i < list.size(); i++){
          int grade = list.getGrade(i).getGrade();
          String course = list.getGrade(i).getCourse();
          out.println(course + "; " + grade);
-         }
+         }*/
          out.close(); 
          }
    
-   private Schedule loadFromTextFile(String filename)throws FileNotFoundException{
+   private WeekSchedule loadFromTextFile(String filename) throws FileNotFoundException{
       ///ArrayList<Grade> grades = new ArrayList<>();
       File file= new File(filename);
       Scanner in = new Scanner(file);

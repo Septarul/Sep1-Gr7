@@ -74,11 +74,4 @@ public class ModelManager implements Model
       list.add(tasks.getTaskByName(t.getName()));
       return list;
    }
-   
-   
-   
-   
-   
-   
-   
 }
