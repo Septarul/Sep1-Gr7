@@ -2,6 +2,7 @@ package model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileManager implements FileManagerInterface
@@ -15,11 +16,11 @@ public class FileManager implements FileManagerInterface
    
 
    @Override 
-   public void saveAllToFile(Schedule sch, String filename) throws Exception{
-         saveAllToTextFile(sch, filename);
+   public void saveAllToFile(WeekSchedule plan, String filename) throws Exception{
+         saveAllToTextFile(plan, filename);
       }
 
-   private void saveAllToTextFile(Schedule list, String filename) throws FileNotFoundException{
+   private void saveAllToTextFile(WeekSchedule list, String filename) throws FileNotFoundException{
       File file= new File(filename);
       PrintWriter out = new PrintWriter(file);
       for (int i = 0; i < list.size(); i++){
@@ -30,27 +31,25 @@ public class FileManager implements FileManagerInterface
          out.close(); 
          }
    
-   private Schedule loadFromTextFile(String filename)throws FileNotFoundException{
-      ///ArrayList<Grade> grades = new ArrayList<>();
+   private WeekSchedule loadFromTextFile(String filename)throws FileNotFoundException{
+      ArrayList<DaySchedule> schedule = new ArrayList<>();
       File file= new File(filename);
       Scanner in = new Scanner(file);
       while (in.hasNext()){
          String line = in.nextLine();
-      // Read a line
       String[] token = line.split(";");
-      // Split the line
-      String course = token[0].trim();
-      int grade = Integer.parseInt(token[1].trim());
-      ///grades.add(new Grade(grade, course));
+      
+      
       }
       in.close();
-      // Close the file
-      ///GradeList list = new GradeList(grades.size());
+
+      WeekSchedule week = new WeekSchedule();
       /// for (int i = 0; i < grades.size(); i++){
       ///   list.addGrade(grades.get(i));
       ///   }
       ///return list;
          }
+
    }
       
    

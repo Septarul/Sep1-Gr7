@@ -15,5 +15,8 @@ public interface Model
    public void addFreeDay(FreeDays free,Employee e);
    public Employee getEmployee(Name name);
    public ArrayList<Task> getTask(Task t);
+   public DaySchedule getDaySchedule(int i);
+   public int numberOfEmployees();
+   public String getTasks();
    
 }

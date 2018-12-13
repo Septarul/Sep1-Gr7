@@ -4,30 +4,33 @@ import java.util.ArrayList;
 public class WeekSchedule
 {
    private ArrayList<DaySchedule> days;
-   private String weekType;
+   private int number;
 
    public WeekSchedule()
    {
-      this.weekType = null;
+      this.number = 0;
       this.days = new ArrayList<>();
    }
    
-   public WeekSchedule(String weekType)
+   public WeekSchedule(int number)
    {
-      this.weekType = weekType;
+      this.number = number;
       this.days = new ArrayList<>();
    }
 
-   public String getWeekType()
+   public int getWeekNumber()
    {
-      return weekType;
+      return number;
    }
 
-   public void setWeekType(String weekType)
+   public void setWeekNumber(int number)
    {
-      this.weekType = weekType;
+      this.number = number;
    }
 
+   public DaySchedule getDay(int i) {
+    return days.get(i);
+   }
    public void addDay(DaySchedule day)
    {
       if (days.size() < 7)
@@ -47,11 +50,6 @@ public class WeekSchedule
       }
    }
 
-   public ArrayList<DaySchedule> sortByDate()
-   {
-      return null;
-   }
-   
    public ArrayList<DaySchedule> getEmptyDays()
    {
       ArrayList<DaySchedule> empty=new ArrayList<>();

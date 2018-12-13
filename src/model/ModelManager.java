@@ -75,7 +75,17 @@ public class ModelManager implements Model
       return list;
    }
    
+   public DaySchedule getDaySchedule(int i) {
+     return schedule.getDay(i);
+   }
    
+   public int numberOfEmployees() {
+      return employees.size();
+   }
+   
+   public String getTasks() {
+      return tasks.getTasks();
+   }
    
    
    

@@ -38,6 +38,17 @@ public class TaskList
       this.list.add(task);
    }
    
+   public String getTasks() {
+      String s="";
+      for(int i = 0 ; i < list.size(); i++){
+         s+=list.get(i).getName();
+         if(i<list.size()-1) {
+            s+=", ";
+         }
+      }
+      return s;
+   }
+   
    public void removeTask(Task t) {
       for (int i=0; i<list.size();i++) {
          if(list.get(i).equals(t))
