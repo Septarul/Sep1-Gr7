@@ -11,7 +11,13 @@ public class FreeDays
       this.endDate=end;
       this.type=type;
   }
-
+   
+   public FreeDays() {
+      this.startDate=null;
+      this.endDate=null;
+      this.type=null;
+  }
+   
    public Date getStartDate()
    {
       return startDate;
