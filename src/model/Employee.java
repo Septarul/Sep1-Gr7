@@ -136,7 +136,14 @@ public class Employee
 
    public boolean isPrefNull()
    {
-      if (pref.equals(null))
+      if (pref==null)
+         return true;
+      return false;
+   }
+   
+   public boolean isFreeDaysNull()
+   {
+      if (freeDays==null)
          return true;
       return false;
    }

@@ -71,6 +71,37 @@ public class FileManager implements FileManagerInterface
       return list1;
    }
    
+   public WeekSchedule loadWeekFromFile(String filename,EmployeeList list1 ) throws Exception {
+     
+      File file=new File(filename);
+      Scanner in=new Scanner(file);
+      WeekSchedule list3=new WeekSchedule();
+      while(in.hasNext()) {
+         String line=in.nextLine();
+         String[] token=line.split(";");
+         String[] date1=token[0].split(":");
+         int a = Integer.parseInt(date1[0]);
+         int b = Integer.parseInt(date1[1]);
+         int c = Integer.parseInt(date1[2]);
+         Date date= new Date(a,b,c);
+         TaskList tasks=new TaskList();
+            for(int i=1;i<token.length;i++) {
+         String[] day=  token[i].split(",");
+         Task t1=new Task(day[0]);
+         EmployeeList emps= new EmployeeList();
+         for(int j=1;j<day.length;j++) {
+            String[] names=day[j].split("/");
+            emps.addEmployee(list1.getEmployeeByName(new Name(names[0],names[1])));
+         }
+         t1.setEmployees(emps);
+         tasks.addTask(t1);
+         }
+            DaySchedule schedule= new DaySchedule(date,tasks);
+         list3.addDay(schedule);
+      }
+      in.close();
+      return list3;
+   }
 
    @Override 
    public void saveTasksToFile(TaskList list, String filename) throws Exception{
