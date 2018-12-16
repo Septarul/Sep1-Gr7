@@ -1,5 +1,6 @@
 package view;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import controller.Controller;
@@ -12,13 +13,13 @@ public class GUI extends Application implements GuiInterface
    private Stage primaryStage;
 
    private MainView mainView;
-   private ViewControllerSearch viewControllerSearchView;
+  /* private ViewControllerSearch viewControllerSearchView;
    private ViewControllerAddEmployee viewControllerAddEmployee;
    private ViewControllerAddTask viewControllerAddTask;
    private ViewControllerDayLogged viewControllerDayLogged;
    private ViewControllerDay viewControllerDay;
    private ViewControllerEmployeesLogged viewControllerEmplyeesLogged;
-   private ViewControllerMainLogged viewControllerMainLogged;
+   private ViewControllerMainLogged viewControllerMainLogged;*/
    private String currentViewID;
 
    private static GUI me;
@@ -45,6 +46,21 @@ public class GUI extends Application implements GuiInterface
       }).start();
    }
 
+   
+   public void start(Stage primaryStage)
+   {
+      if (this != me)
+      {
+         me.start(primaryStage);
+         return;
+      }
+      this.primaryStage = primaryStage;
+      this.mainView = new MainView(this);
+      primaryStage.setScene(mainView.getScene());
+      primaryStage.setTitle(mainView.getTitle());
+      primaryStage.show();
+   }
+   /*
    @Override // Application
    public void start(Stage primaryStage)
    {
@@ -55,7 +71,19 @@ public class GUI extends Application implements GuiInterface
       }
       this.primaryStage = primaryStage;
 
-      setWindow("MAIN");
+      if (mainView == null)
+      {
+         mainView = new MainView(this);
+      }
+      else
+      {
+         mainView.initialize();
+      }
+   } */
+   
+   public Controller getController()
+   {
+      return controller;
    }
    /*
    public void setWindow(String type)
@@ -106,7 +134,7 @@ public class GUI extends Application implements GuiInterface
       {
       }
    }
-*/
+
    @Override
    public Object[] getInput(String type)
    {
@@ -144,10 +172,7 @@ public class GUI extends Application implements GuiInterface
       }
    }
 
-   public Controller getController()
-   {
-      return controller;
-   }
+   
 
    @Override
    public void remove(ArrayList<Integer> indices)
@@ -159,5 +184,13 @@ public class GUI extends Application implements GuiInterface
    public Integer[] confirmRemoving(Integer[] indices)
    {
       return viewControllerCustomers.confirmRemoving(indices);
+   }
+   
+   */
+
+   public void setWindow(String string)
+   {
+      // TODO Auto-generated method stub
+      
    }
 }

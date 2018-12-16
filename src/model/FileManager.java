@@ -1,7 +1,6 @@
 package model;
 
 import java.io.File;
-import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class FileManager implements FileManagerInterface
@@ -22,8 +21,8 @@ public class FileManager implements FileManagerInterface
       return list;
    }
 
-   public EmployeeList loadEmployeeListFromFile(String filename, TaskList list)
-         throws Exception
+   public EmployeeList loadEmployeeListFromFile(String filename, TaskList list) throws Exception
+         
    {
       File file = new File(filename);
       Scanner in = new Scanner(file);
@@ -37,7 +36,6 @@ public class FileManager implements FileManagerInterface
          Employee e = new Employee(name1);
          if (token[1].equals("n"))
          {
-            FreeDays freedays = new FreeDays();
          }
          else
          {
@@ -80,8 +78,8 @@ public class FileManager implements FileManagerInterface
       return list1;
    }
 
-   public WeekSchedule loadWeekFromFile(String filename, EmployeeList list1)
-         throws Exception
+   public WeekSchedule loadWeekFromFile(String filename, EmployeeList list1) throws Exception
+         
    {
 
       File file = new File(filename);
@@ -105,8 +103,9 @@ public class FileManager implements FileManagerInterface
             for (int j = 1; j < day.length; j++)
             {
                String[] names = day[j].split("/");
+               Name sal=new Name(names[0],names[1]);
                emps.addEmployee(
-                     list1.getEmployeeByName(new Name(names[0], names[1])));
+                    list1.getEmployeeByName(sal));
             }
             t1.setEmployees(emps);
             tasks.addTask(t1);
@@ -117,9 +116,9 @@ public class FileManager implements FileManagerInterface
       in.close();
       return list3;
    }
-
+/*
    @Override
-   public void saveTasksToFile(TaskList list, String filename) throws Exception
+   public void saveTasksToFile(TaskList list, String filename) throws FileNotFoundException
    {
       String[] tasks = new String[list.size()];
       for (int i = 0; i < list.size(); i++)
@@ -135,8 +134,8 @@ public class FileManager implements FileManagerInterface
       out.close();
    }
 
-   public void saveEmployeesToFile(EmployeeList list1, String filename)
-         throws Exception
+   public void saveEmployeesToFile(EmployeeList list1, String filename) throws FileNotFoundException
+         
    {
       File file = new File(filename);
       PrintWriter out = new PrintWriter(file);
@@ -189,5 +188,53 @@ public class FileManager implements FileManagerInterface
          out.println(employ[i] + ";" + free[i] + ";" + pref + ";" + trainings);
       }
       out.close();
+   }
+
+   public void saveWeekToFile(WeekSchedule week, String filename) throws FileNotFoundException
+         
+   {
+      File file = new File(filename);
+      PrintWriter out = new PrintWriter(file);
+      String[] date = new String[week.size()];
+      String[] task = new String[week.size()];
+      for (int i = 0; i < week.size(); i++)
+      {
+         date[i] = week.getDay(i).getDate().getDay() + ":"
+               + week.getDay(i).getDate().getMonth() + ":"
+               + week.getDay(i).getDate().getYear();
+         for (int j = 0; j < week.getDay(i).getTasks().size(); j++)
+         {
+            //if (j < week.getDay(i).getTasks().size() - 1)
+            //{
+               for (int t = 0; t < week.getDay(i).getTasks().get(j)
+                     .getEmployees().size(); t++)
+               {
+                  //if (t < week.getDay(i).getTasks().get(j).getEmployees().size()
+                  //     - 1)
+                  //{
+                     task[i] += week.getDay(i).getTasks().get(j).getName() + ","
+                           + week.getDay(i).getTasks().get(j).getEmployees()
+                                 .get(t).getName().getFirstName()
+                           + "/" + week.getDay(i).getTasks().get(j)
+                                 .getEmployees().get(t).getName().getLastName()
+                           + ",";
+                  //}
+               }
+            }
+            //else
+            //{
+
+            //}
+         out.println(date[i]+";"+task[i]);
+      }
+      out.close();
+   }
+   */
+
+   @Override
+   public void saveTasksToFile(TaskList list, String filename) throws Exception
+   {
+      // TODO Auto-generated method stub
+      
    }
 }

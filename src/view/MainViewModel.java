@@ -11,8 +11,8 @@ public class MainViewModel
    
    public MainViewModel(String day, String tasks)
    {
-      dayProperty = new SimpleStringProperty(day);
-      tasksProperty = new SimpleStringProperty(tasks);
+      dayProperty = new SimpleStringProperty("dayasd");
+      tasksProperty = new SimpleStringProperty("tasksddd");
    }
    
    public String getDay()

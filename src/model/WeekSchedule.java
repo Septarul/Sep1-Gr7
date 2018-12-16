@@ -4,28 +4,43 @@ import java.util.ArrayList;
 public class WeekSchedule
 {
    private ArrayList<DaySchedule> days;
-   private int number;
+   private int week;
+   private int year;
 
    public WeekSchedule()
    {
-      this.number = 0;
+      this.year=0;
+      this.week = 0;
       this.days = new ArrayList<>();
    }
    
-   public WeekSchedule(int number)
+   public WeekSchedule(int week,int year)
    {
-      this.number = number;
+      this.year=year;
+      this.week = week;
       this.days = new ArrayList<>();
    }
 
+   public int getYear() {
+      return year;
+   }
+   
+   public int size()
+   {
+      return days.size();
+   }
    public int getWeekNumber()
    {
-      return number;
+      return week;
    }
 
-   public void setWeekNumber(int number)
+   public void setWeek(int number)
    {
-      this.number = number;
+      this.week = number;
+   }
+   public void setYear(int number)
+   {
+      this.year = number;
    }
 
    public DaySchedule getDay(int i) {
@@ -84,4 +99,10 @@ public class WeekSchedule
       }
       return null;
    }
+   
+   public int getDayNumber()
+   {
+      return days.size();
+   }
+
 }
