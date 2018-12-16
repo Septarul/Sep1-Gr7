@@ -1,6 +1,10 @@
 package model;
+import java.time.LocalDate;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class Date
 {
@@ -18,6 +22,15 @@ public class Date
       this.month = now.get(Calendar.MONTH) + 1;
       this.year = now.get(Calendar.YEAR);
 
+   }
+   
+   public int weekNumber()
+   {
+      LocalDate date = LocalDate.of(year, month, day);
+      WeekFields wf = WeekFields.of(Locale.getDefault());
+      TemporalField weekNum = wf.weekOfWeekBasedYear();
+      int week = Integer.parseInt(String.format("%02d", date.get(weekNum)));
+      return week;
    }
 
    public void set(int day, int month, int year)
@@ -138,6 +151,22 @@ public class Date
          }
       }
    }
+   
+   public void stepBackwardOneDay()
+   {
+      day--;
+      if (day < 1)
+      {
+         month--;
+         day = numberOfDaysInMonth();
+         if (month < 1)
+         {
+            month = 12;
+            year--;
+         }
+      }
+   }
+   
    public int daysBetween(Date other)
    {
       int count = 0;

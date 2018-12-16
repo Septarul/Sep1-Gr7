@@ -1,10 +1,7 @@
 package view;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import model.Task;
 
 public class MainViewModel
 {
@@ -14,8 +11,8 @@ public class MainViewModel
    
    public MainViewModel(String day, String tasks)
    {
-      dayProperty = new SimpleStringProperty(day);
-      tasksProperty = new SimpleStringProperty(tasks);
+      dayProperty = new SimpleStringProperty("dayasd");
+      tasksProperty = new SimpleStringProperty("tasksddd");
    }
    
    public String getDay()

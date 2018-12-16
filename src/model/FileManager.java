@@ -1,7 +1,6 @@
 package model;
 
 import java.io.File;
-import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class FileManager implements FileManagerInterface
@@ -22,8 +21,8 @@ public class FileManager implements FileManagerInterface
       return list;
    }
 
-   public EmployeeList loadEmployeeListFromFile(String filename, TaskList list)
-         throws Exception
+   public EmployeeList loadEmployeeListFromFile(String filename, TaskList list) throws Exception
+         
    {
       File file = new File(filename);
       Scanner in = new Scanner(file);
@@ -37,8 +36,6 @@ public class FileManager implements FileManagerInterface
          Employee e = new Employee(name1);
          if (token[1].equals("n"))
          {
-            FreeDays freedays = new FreeDays();
-            e.setFreeDays(freedays);
          }
          else
          {
@@ -81,8 +78,8 @@ public class FileManager implements FileManagerInterface
       return list1;
    }
 
-   public WeekSchedule loadWeekFromFile(String filename, EmployeeList list1)
-         throws Exception
+   public WeekSchedule loadWeekFromFile(String filename, EmployeeList list1) throws Exception
+         
    {
 
       File file = new File(filename);
@@ -106,8 +103,9 @@ public class FileManager implements FileManagerInterface
             for (int j = 1; j < day.length; j++)
             {
                String[] names = day[j].split("/");
+               Name sal=new Name(names[0],names[1]);
                emps.addEmployee(
-                     list1.getEmployeeByName(new Name(names[0], names[1])));
+                    list1.getEmployeeByName(sal));
             }
             t1.setEmployees(emps);
             tasks.addTask(t1);
@@ -118,9 +116,9 @@ public class FileManager implements FileManagerInterface
       in.close();
       return list3;
    }
-
+/*
    @Override
-   public void saveTasksToFile(TaskList list, String filename) throws Exception
+   public void saveTasksToFile(TaskList list, String filename) throws FileNotFoundException
    {
       String[] tasks = new String[list.size()];
       for (int i = 0; i < list.size(); i++)
@@ -136,46 +134,50 @@ public class FileManager implements FileManagerInterface
       out.close();
    }
 
-   public void saveEmployeesToFile(EmployeeList list, String filename)
-         throws Exception
+   public void saveEmployeesToFile(EmployeeList list1, String filename) throws FileNotFoundException
+         
    {
       File file = new File(filename);
       PrintWriter out = new PrintWriter(file);
-      String[] employ = new String[list.size()];
-      String[] free = new String[list.size()];
+      String[] employ = new String[list1.size()];
+      String[] free = new String[list1.size() * 3];
       String pref = "";
-      String[] train = new String[list.get(1).getTraining().size()];
-      for (int i = 0; i < list.size(); i++)
+      String[] train = new String[list1.get(1).getTraining().size()];
+      for (int i = 0; i < list1.size(); i++)
       {
-         employ[i] = list.get(i).getName().getFirstName() + ","
-               + list.get(i).getName().getLastName();
-         if (!(list.get(i).getFreeDays().equals(null)))
+         employ[i] = list1.get(i).getName().getFirstName() + ","
+               + list1.get(i).getName().getLastName();
+         if (!(list1.get(i).isFreeDaysNull()))
          {
-            free[i] = (String) (list.get(i).getFreeDays().getStartDate()
-                  .getDay() + "/"
-                  + list.get(i).getFreeDays().getStartDate().getMonth() + "/"
-                  + list.get(i).getFreeDays().getEndDate().getYear() + ","
-                  + list.get(i).getFreeDays().getEndDate().getDay() + "/"
-                  + list.get(i).getFreeDays().getEndDate().getMonth() + "/"
-                  + list.get(i).getFreeDays().getEndDate().getYear() + ","
-                  + list.get(i).getFreeDays().getType());
+            free[i] = list1.get(i).getFreeDays().getStartDate().getDay() + "/"
+                  + list1.get(i).getFreeDays().getStartDate().getMonth() + "/"
+                  + list1.get(i).getFreeDays().getStartDate().getYear() + ","
+                  + list1.get(i).getFreeDays().getEndDate().getDay() + "/"
+                  + list1.get(i).getFreeDays().getEndDate().getMonth() + "/"
+                  + list1.get(i).getFreeDays().getEndDate().getYear() + ","
+                  + list1.get(i).getFreeDays().getType();
          }
          else
          {
             free[i] = "n";
          }
-         if (!(list.get(i).getPreferences().equals(null)))
+         if (!(list1.get(i).isPrefNull()))
          {
-            pref = list.get(i).getPreferences();
+            pref = list1.get(i).getPreferences();
          }
          else
          {
             pref = "m";
          }
          int m = 0;
-         for (int j = 0; j < list.get(i).getTraining().size(); j++)
+         for (int j = 0; j < list1.get(i).getTraining().size(); j++)
          {
-            train[j] = list.get(j).getTraining().get(m).getStatus() + ",";
+            train[j] = list1.get(i).getTraining().get(m).getStatus() + "";
+            if (j < list1.get(i).getTraining().size() - 1)
+            {
+               train[j] += ",";
+            }
+            m++;
          }
          String trainings = "";
          for (int t = 0; t < train.length; t++)
@@ -188,8 +190,8 @@ public class FileManager implements FileManagerInterface
       out.close();
    }
 
-   public void saveWeekToFile(WeekSchedule week, String filename)
-         throws Exception
+   public void saveWeekToFile(WeekSchedule week, String filename) throws FileNotFoundException
+         
    {
       File file = new File(filename);
       PrintWriter out = new PrintWriter(file);
@@ -212,5 +214,13 @@ public class FileManager implements FileManagerInterface
          out.println(date+";"+task);
       }
       out.close();
+   }
+   */
+
+   @Override
+   public void saveTasksToFile(TaskList list, String filename) throws Exception
+   {
+      // TODO Auto-generated method stub
+      
    }
 }

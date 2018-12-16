@@ -1,6 +1,8 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+
 
 public interface Model
 {
@@ -19,6 +21,11 @@ public interface Model
    public int numberOfEmployees();
    public String getTasks();
    public abstract void addTraining(Training t, Employee e);
+   public int weekNumber(LocalDate date);
+   public WeekSchedule getWeekSchedule();
+   public WeekSchedule getWeekPlan(String date) throws Exception;
+   public WeekSchedule getNewWeekPlan(Date date);
+   public WeekSchedule getDummyWeekPlan(Date date);
 
    
 }

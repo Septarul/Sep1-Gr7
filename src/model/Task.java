@@ -9,7 +9,7 @@ public class Task
    public Task(String name)
    {
       this.name = name;
-      this.employees = null;
+      this.employees = new EmployeeList();
    }
 
    public void setEmployees(EmployeeList employees)
@@ -50,6 +50,9 @@ public class Task
       }
       Task other = (Task)obj;
       return name.equals(other.name);
-      
+   }
+   
+   public String toString() {
+      return name;
    }
 }
