@@ -193,37 +193,23 @@ public class FileManager implements FileManagerInterface
    {
       File file = new File(filename);
       PrintWriter out = new PrintWriter(file);
-      String[] date = new String[week.size()];
-      String[] task = new String[week.size()];
+      String date = "";
+      String task ="";
       for (int i = 0; i < week.size(); i++)
       {
-         date[i] = week.getDay(i).getDate().getDay() + ":"
+         date = week.getDay(i).getDate().getDay() + ":"
                + week.getDay(i).getDate().getMonth() + ":"
                + week.getDay(i).getDate().getYear();
          for (int j = 0; j < week.getDay(i).getTasks().size(); j++)
          {
-            //if (j < week.getDay(i).getTasks().size() - 1)
-            //{
-               for (int t = 0; t < week.getDay(i).getTasks().get(j)
-                     .getEmployees().size(); t++)
-               {
-                  //if (t < week.getDay(i).getTasks().get(j).getEmployees().size()
-                  //     - 1)
-                  //{
-                     task[i] += week.getDay(i).getTasks().get(j).getName() + ","
-                           + week.getDay(i).getTasks().get(j).getEmployees()
-                                 .get(t).getName().getFirstName()
-                           + "/" + week.getDay(i).getTasks().get(j)
-                                 .getEmployees().get(t).getName().getLastName()
-                           + ",";
-                  //}
-               }
+            String empl="";
+            for (int t = 0; t < week.getDay(i).getTasks().get(j).getEmployees().size(); t++)
+            {
+               empl+=week.getDay(i).getTasks().get(j).getEmployees().get(t).getName().getFirstName()+"/"+week.getDay(i).getTasks().get(j).getEmployees().get(t).getName().getLastName()+",";
             }
-            //else
-            //{
-
-            //}
-         out.println(date[i]+";"+task[i]);
+            task=week.getDay(i).getTasks().get(j).getName()+","+empl;
+         }
+         out.println(date+";"+task);
       }
       out.close();
    }
