@@ -9,17 +9,17 @@ import java.util.Scanner;
 /**
  * A class representing the class that reads and saves to files.
  * 
- * @author Radu Candea
+ * @author Marian Claudiu Culea
  * @version 1.3 - 16/12/2018
  */
 public class FileManager implements FileManagerInterface
 {
    /**
-    * Reading the admin file and creating an array list with the data.
+    * Reading the administrator file and creating an array list with the data.
     * 
     * @param filename
     *           the name of the file.
-    * @return the array list with all the admins.
+    * @return the array list with all the administrator.
     * @throws Exception if file is not found.
     */
    public ArrayList<Administrator> loadAdmins(String filename) throws Exception
@@ -43,7 +43,7 @@ public class FileManager implements FileManagerInterface
     * 
     * @param filename
     *           the name of the file.
-    * @return the task list all the admins.
+    * @return the task list all the administrator.
     * @throws Exception if file is not found.
     */
    public TaskList loadTaskListFromFile(String filename) throws Exception
@@ -69,7 +69,7 @@ public class FileManager implements FileManagerInterface
     *           the name of the file.
     * @param list
     *           the list with all the files.
-    * @returns the employee list.
+    * @return the employee list.
     * @throws Exception if file is not found.
     */
    public EmployeeList loadEmployeeListFromFile(String filename, TaskList list)
@@ -138,7 +138,7 @@ public class FileManager implements FileManagerInterface
     *           the name of the file.
     * @param list1
     *           the list with all the employees.
-    * @returns the week schedule.
+    * @return the week schedule.
     * @throws Exception if file is not found.
     */
    public WeekSchedule loadWeekFromFile(String filename, EmployeeList list1)
@@ -184,7 +184,7 @@ public class FileManager implements FileManagerInterface
     * @param filename
     *           the name of the file.
     * @param list
-    *           the list with the admins.
+    *           the list with the administrator.
     * @throws Exception if file is not found.
     */
    public void saveAdmins(String filename, ArrayList<Administrator> list)

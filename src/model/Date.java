@@ -46,7 +46,7 @@ public class Date
 
    }
    /**
-    * Finding out the week number of the date.
+    * Finding out the week number of a date.
     * @return the integer representing the week number.
     */
    public int weekNumber()

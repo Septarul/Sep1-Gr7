@@ -4,7 +4,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 /**
  * A class representing the interface for the file manager.
- * @author Radu Candea
+ * 
+ * @author Marian Claudiu Culea
  * @version 1.3 - 16/12/2018
  */
 public interface FileManagerInterface
