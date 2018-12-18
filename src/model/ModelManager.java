@@ -72,7 +72,6 @@ public class ModelManager implements Model
     */
    public WeekSchedule getNewWeekPlan(Date date)
    {
-      
       Date date1=date.copy();
       WeekSchedule week=new WeekSchedule(date1.weekNumber(), date1.getYear());
       for (int i=0;i<5;i++) {
@@ -199,7 +198,7 @@ public class ModelManager implements Model
       return employees.size();
    }
    /**
-    * Returning the general task list.
+    * @return the general task list.
     */
    public TaskList getTasks()
    {

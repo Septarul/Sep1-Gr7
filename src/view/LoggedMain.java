@@ -115,10 +115,11 @@ public class LoggedMain
     * Changes the stage to the DayView stage.
     * 
     */
+   @FXML
    private void showpressed()
    {
       
-      MainViewModel selected = table.getSelectionModel().getSelectedItem();
+      //MainViewModel selected = table.getSelectionModel().getSelectedItem();
       // gui.setWindow("show");
    }
 

@@ -1,4 +1,0 @@
-Nume,id,pref,1
-Nume2,id2,pref2,2
-Nume3,id3,pref3,3
-Nume4,id4,pref4,4

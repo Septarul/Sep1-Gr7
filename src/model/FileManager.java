@@ -190,7 +190,16 @@ public class FileManager implements FileManagerInterface
    public void saveAdmins(String filename, ArrayList<Administrator> list)
          throws Exception
    {
-
+      File file = new File("src/admins.txt");
+      PrintWriter out = new PrintWriter(file);
+      String user,pass;
+      for (int i = 0; i < list.size(); i++)
+      {
+         user = list.get(i).getUser();
+         pass = list.get(i).getPassword();
+         out.println(user + "," + pass);
+      }
+      out.close();
    }
 
    /**
