@@ -1,7 +1,7 @@
 package model;
 /**
  * A class representing the interface for the model manager.
- * @author Sprite
+ * 
  * @author Marian Claudiu Culea
  * @version 1.7 - 17/12/2018
  */

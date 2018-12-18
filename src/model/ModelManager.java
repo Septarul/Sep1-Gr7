@@ -2,7 +2,8 @@ package model;
 
 import java.util.ArrayList;
 /**
- * A class representing
+ * A class representing the model manager of the system
+ * 
  * @author Marian Claudiu Culea
  * @version 1.7 - 17/12/2018
  */
@@ -16,7 +17,7 @@ public class ModelManager implements Model
    private ArrayList<Administrator> admins;
    
    /**
-    * A constructor that assigns the the Task list, Employee list, Week schedule and admins from the files. 
+    * No argument constructor that assigns the the Task list, Employee list, Week schedule and admins from the files. 
     * @throws Exception if one of the files is not found.
     */
    public ModelManager() throws Exception
@@ -29,6 +30,7 @@ public class ModelManager implements Model
       this.admins=file.loadAdmins("src/admins.txt");
    }
    /**
+    * getter for the week schedule
     * @return the week schedule.
     */
    public WeekSchedule getWeekSchedule() {
@@ -36,10 +38,12 @@ public class ModelManager implements Model
       return schedule;
    }
    /**
-    * Checking if the arguments are compatible witht the admins in the system.
+    * Checking if the arguments are compatible with the administrators in the system.
     * 
     * @param user
+    *          a String with the user name
     * @param password
+    *          a String with the password
     */
    public boolean validateLogin(String user, String password)
    {

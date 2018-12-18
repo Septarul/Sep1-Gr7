@@ -31,7 +31,7 @@ public class MainViewModel
       tasksProperty = new SimpleStringProperty(tasks);
    }
 /**
- * getter for the date
+ * getter method for the date
  * @return the date
  */
    public Date getDate()
@@ -40,7 +40,7 @@ public class MainViewModel
       return date;
    }
 /**
- * getter for the day
+ * getter method for the day
  * @return the day
  */
    public String getDay()
