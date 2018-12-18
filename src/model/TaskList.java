@@ -49,31 +49,18 @@ public class TaskList
       return s;
    }
    
-   public void removeTask(Task t) {
+   public void removeTask(String t) {
       for (int i=0; i<list.size();i++) {
-         if(list.get(i).equals(t))
+         if(list.get(i).getName().equals(t))
             list.remove(i);
       }
    }
    
-   public void removeTask(int index)
-   {
-      this.list.remove(index);
-   }
-
    public Task get(int index)
    {
       return list.get(index);
    }
 
-   public boolean isPrefValid(String task) {
-      for(int i = 0 ; i < list.size(); i++){
-         if(list.get(i).getName().equals(task))
-            return true;
-      }
-      return false;
-   }
-   
    public Task getTaskByName(String name)
    {
       for (int i = 0; i < list.size(); i++)

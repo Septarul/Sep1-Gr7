@@ -1,8 +1,11 @@
 package model;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
-
+/**
+ * 
+ * @author Marian Claudiu Culea
+ *
+ */
 public class ModelManager implements Model 
 {
    
@@ -10,6 +13,7 @@ public class ModelManager implements Model
    private EmployeeList employees;
    private WeekSchedule schedule;
    private TaskList tasks;
+   private ArrayList<Administrator> admins;
    
    
    public ModelManager() throws Exception
@@ -20,47 +24,40 @@ public class ModelManager implements Model
       //Date date = new Date();
       //String s="src/";
       //s=date.weekNumber()+ "."+ date.getYear()+".txt";
-      this.schedule=file.loadWeekFromFile("src/51.2018.txt", this.employees);
+      this.schedule=file.loadWeekFromFile("src/51-2018.txt", this.employees);
+      this.admins=file.loadAdmins("src/admins.txt");
    }
    
    public WeekSchedule getWeekSchedule() {
       return schedule;
    }
 
-   public String validateLogin(String user, String password,Administrator[] list)
+   public boolean validateLogin(String user, String password)
    {
-      for(int i = 0 ; i < list.length; i++){
-         if(!(user.equals(list[i].getUser()))&& !(password.equals(list[i].getPassword()))) {
-            return "Incorrect passowrd or username";
+      for(int i = 0 ; i < admins.size(); i++){
+         if(user.equals(admins.get(i).getUser())) {
+            if(password.equals(admins.get(i).getPassword())) {
+               return true;
          }
+         }
+       
       }
-      return null;
+      return false;
    }
    
    public WeekSchedule getWeekPlan(String date) throws Exception {
       return file.loadWeekFromFile(date, this.employees);
    }
    
-   public WeekSchedule getDummyWeekPlan(Date date) {
-      WeekSchedule week=new WeekSchedule(date.weekNumber(), date.getYear());
-      Date date1=date.copy();
-      for (int i=0;i<5;i++) {
-         TaskList tasks=new TaskList();
-         tasks.addTask(new Task("Meelk"));
-         DaySchedule day= new DaySchedule(date1, tasks);
-         date1.stepForwardOneDay();
-         week.addDay(day);
-      }
-      return week;
-   }
    public WeekSchedule getNewWeekPlan(Date date)
    {
-      WeekSchedule week=new WeekSchedule(date.weekNumber(), date.getYear());
       Date date1=date.copy();
+      WeekSchedule week=new WeekSchedule(date1.weekNumber(), date1.getYear());
       for (int i=0;i<5;i++) {
          TaskList tasks=new TaskList();
-         DaySchedule day= new DaySchedule(date1, tasks);
+         DaySchedule day= new DaySchedule(date1.copy(), tasks);
          date1.stepForwardOneDay();
+         
          week.addDay(day);
       }
       return week;
@@ -83,52 +80,40 @@ public class ModelManager implements Model
    }
    
    public void removeTask(Task t) {
-      tasks.removeTask(t);
+      tasks.removeTask(t.getName());
    }
    
    public void removeDay(DaySchedule s) {
       schedule.getDayByDate(s.getDate()).removeTasks();
    }
    
-   public void addPreference(String pref , Employee e) {
-      e.setPreferences(pref);
+   public void addPreference(String pref , Name e) {
+      employees.getEmployeeByName(e).setPreferences(pref);
    }
    
-   public void addFreeDay(FreeDays free,Employee e) {
-      e.setFreeDays(free);
+   public void addFreeDay(FreeDays free,Name e) {
+      employees.getEmployeeByName(e).setFreeDays(free);;
    }
    
-  public void addTraining(Training t, Employee e) {
-      //e.setTraining(t);
+  public void addTraining(Training t, Name e) {
+     employees.getEmployeeByName(e).setTraining(t);
    }
    
    public Employee getEmployee(Name name) {
    return employees.getEmployeeByName(name);  
    }
    
-   public ArrayList<Task> getTask(Task t){
-      ArrayList<Task> list = new ArrayList<>();
-      list.add(tasks.getTaskByName(t.getName()));
-      return list;
+   public Task getTask(String t){
+      return tasks.getTaskByName(t);
    }
-   
-   public DaySchedule getDaySchedule(int i) {
-     return schedule.getDay(i);
-   }
-   
+
    public int numberOfEmployees() {
       return employees.size();
    }
-   
-   public String getTasks() {
-      return tasks.getTasks();
-   }
-   
-   public int weekNumber(LocalDate date)
+
+   public TaskList getTasks()
    {
-      Date myDate = new Date(date.getDayOfMonth(), date.getMonthValue(),
-            date.getYear());
-      return myDate.weekNumber();
+      return tasks;
    }
-   
+
 }

@@ -1,11 +1,28 @@
 package model;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileManager implements FileManagerInterface
 {
 
+   public ArrayList<Administrator> loadAdmins(String filename) throws Exception{
+      File file = new File(filename);
+      Scanner in = new Scanner(file);
+      ArrayList<Administrator> list = new ArrayList<>();
+      while (in.hasNext())
+      {
+         String line = in.nextLine();
+         String[] token=line.split(",");
+         Administrator ad= new Administrator(token[0],token[1]);
+         list.add(ad);
+      }
+      in.close();
+      return list;
+   }
    public TaskList loadTaskListFromFile(String filename) throws Exception
    {
       File file = new File(filename);
@@ -78,10 +95,8 @@ public class FileManager implements FileManagerInterface
       return list1;
    }
 
-   public WeekSchedule loadWeekFromFile(String filename, EmployeeList list1) throws Exception
-         
+   public WeekSchedule loadWeekFromFile(String filename, EmployeeList list1) throws Exception    
    {
-
       File file = new File(filename);
       Scanner in = new Scanner(file);
       WeekSchedule list3 = new WeekSchedule();
@@ -116,7 +131,38 @@ public class FileManager implements FileManagerInterface
       in.close();
       return list3;
    }
-/*
+   
+   public void saveAdmins(String filename) {
+      
+   }
+   
+   public void saveWeekToFile(String filename,WeekSchedule list3) throws FileNotFoundException {
+   File file = new File(filename);
+   PrintWriter out = new PrintWriter(file);
+   String date ="";
+   String task ="";
+   for (int i = 0; i < list3.size(); i++)
+   {
+      date = list3.getDay(i).getDate().getDay() + ":"
+            + list3.getDay(i).getDate().getMonth() + ":"
+            + list3.getDay(i).getDate().getYear();
+      for (int j = 0; j < list3.getDay(i).getTasks().size(); j++)
+      {
+         String empl="";
+         for (int t = 0; t < list3.getDay(i).getTasks().get(j).getEmployees().size(); t++)
+         {
+            System.out.println(list3.getDay(i).getTasks().get(j).getEmployees());
+            empl+=list3.getDay(i).getTasks().get(j).getEmployees().get(t).getName().getFirstName()+"/"+list3.getDay(i).getTasks().get(j).getEmployees().get(t).getName().getLastName()+",";
+         }
+         task=list3.getDay(i).getTasks().get(j).getName()+","+empl;
+      }
+      out.println(date+";"+task);
+   }
+   out.close();
+   }
+   
+   
+   
    @Override
    public void saveTasksToFile(TaskList list, String filename) throws FileNotFoundException
    {
@@ -188,53 +234,5 @@ public class FileManager implements FileManagerInterface
          out.println(employ[i] + ";" + free[i] + ";" + pref + ";" + trainings);
       }
       out.close();
-   }
-
-   public void saveWeekToFile(WeekSchedule week, String filename) throws FileNotFoundException
-         
-   {
-      File file = new File(filename);
-      PrintWriter out = new PrintWriter(file);
-      String[] date = new String[week.size()];
-      String[] task = new String[week.size()];
-      for (int i = 0; i < week.size(); i++)
-      {
-         date[i] = week.getDay(i).getDate().getDay() + ":"
-               + week.getDay(i).getDate().getMonth() + ":"
-               + week.getDay(i).getDate().getYear();
-         for (int j = 0; j < week.getDay(i).getTasks().size(); j++)
-         {
-            //if (j < week.getDay(i).getTasks().size() - 1)
-            //{
-               for (int t = 0; t < week.getDay(i).getTasks().get(j)
-                     .getEmployees().size(); t++)
-               {
-                  //if (t < week.getDay(i).getTasks().get(j).getEmployees().size()
-                  //     - 1)
-                  //{
-                     task[i] += week.getDay(i).getTasks().get(j).getName() + ","
-                           + week.getDay(i).getTasks().get(j).getEmployees()
-                                 .get(t).getName().getFirstName()
-                           + "/" + week.getDay(i).getTasks().get(j)
-                                 .getEmployees().get(t).getName().getLastName()
-                           + ",";
-                  //}
-               }
-            }
-            //else
-            //{
-
-            //}
-         out.println(date[i]+";"+task[i]);
-      }
-      out.close();
-   }
-   */
-
-   @Override
-   public void saveTasksToFile(TaskList list, String filename) throws Exception
-   {
-      // TODO Auto-generated method stub
-      
    }
 }

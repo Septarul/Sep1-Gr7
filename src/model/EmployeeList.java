@@ -34,10 +34,6 @@ public class EmployeeList
       this.list.add(employee);
    }
 
-   public void removeEmployee(int index)
-   {
-      this.list.remove(index);
-   }
    public void removeEmployee(Name name)
    {
       for (int i = 0; i <list.size(); i++)

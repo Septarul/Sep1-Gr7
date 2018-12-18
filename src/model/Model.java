@@ -1,31 +1,23 @@
 package model;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-
-
 public interface Model
 {
-   public String validateLogin(String user, String password, Administrator[] list);
+   public boolean validateLogin(String user, String password);
    public void addEmployee(Employee e);
    public void  addTask(Task t);
    public void addSchedule(DaySchedule s);
    public void removeEmployee(Employee e);
    public void removeTask(Task t);
    public void removeDay(DaySchedule s);
-   public void addPreference(String pref , Employee e);
-   public void addFreeDay(FreeDays free,Employee e);
+   public void addPreference(String pref , Name e);
+   public void addFreeDay(FreeDays free,Name e);
    public Employee getEmployee(Name name);
-   public ArrayList<Task> getTask(Task t);
-   public DaySchedule getDaySchedule(int i);
    public int numberOfEmployees();
-   public String getTasks();
-   public abstract void addTraining(Training t, Employee e);
-   public int weekNumber(LocalDate date);
+   public TaskList getTasks();
+   public void addTraining(Training t, Name e);
+   public Task getTask(String t);
    public WeekSchedule getWeekSchedule();
    public WeekSchedule getWeekPlan(String date) throws Exception;
    public WeekSchedule getNewWeekPlan(Date date);
-   public WeekSchedule getDummyWeekPlan(Date date);
 
-   
 }

@@ -1,25 +1,21 @@
 package view;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import controller.Controller;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
+/**
+ * A class representing the GUI.
+ * @author Marian Claudiu Culea
+ * @version 1.5 - 17/12/2018
+ */
 public class GUI extends Application implements GuiInterface
 {
    private Controller controller;
    private Stage primaryStage;
-
    private MainView mainView;
-  /* private ViewControllerSearch viewControllerSearchView;
-   private ViewControllerAddEmployee viewControllerAddEmployee;
-   private ViewControllerAddTask viewControllerAddTask;
-   private ViewControllerDayLogged viewControllerDayLogged;
-   private ViewControllerDay viewControllerDay;
-   private ViewControllerEmployeesLogged viewControllerEmplyeesLogged;
-   private ViewControllerMainLogged viewControllerMainLogged;*/
+   private LoginView w13;
+   private AddAdminView w1;
+   private LoggedMain w2;
    private String currentViewID;
 
    private static GUI me;
@@ -35,6 +31,11 @@ public class GUI extends Application implements GuiInterface
    @Override 
    public void start(Controller controller)
    {
+      /**
+       * Launches the GUI giving it a controller.
+       * @param controller
+       *          the controller.
+       */
       this.controller = controller;
 
       new Thread(new Runnable()
@@ -49,6 +50,11 @@ public class GUI extends Application implements GuiInterface
    
    public void start(Stage primaryStage)
    {
+      /**
+       * Giving the GUI a primary stage.
+       * @param primaryStage
+       *          the stage that will be displaying.
+       */
       if (this != me)
       {
          me.start(primaryStage);
@@ -60,40 +66,28 @@ public class GUI extends Application implements GuiInterface
       primaryStage.setTitle(mainView.getTitle());
       primaryStage.show();
    }
-   /*
-   @Override // Application
-   public void start(Stage primaryStage)
-   {
-      if (me != this)
-      {
-         me.start(primaryStage);
-         return;
-      }
-      this.primaryStage = primaryStage;
-
-      if (mainView == null)
-      {
-         mainView = new MainView(this);
-      }
-      else
-      {
-         mainView.initialize();
-      }
-   } */
    
    public Controller getController()
    {
+      /**
+       * Returns the controller.
+       */
       return controller;
    }
-   /*
+
    public void setWindow(String type)
    {
+      /**
+       * Changing the primary to the specified stage.
+       * @param type
+       *         a string that represents the Id of a window. 
+       */
       this.currentViewID = type;
       try
       {
          switch (currentViewID)
          {
-            case "MAIN":
+            case "main":
                if (mainView == null)
                {
                   mainView = new MainView(this);
@@ -105,29 +99,46 @@ public class GUI extends Application implements GuiInterface
                primaryStage.setScene(mainView.getScene());
                primaryStage.setTitle(mainView.getTitle());
                break;
-            case "SEARCH":
-               if (viewControllerEditCustomer == null)
+            case "login":
+               if (w13 == null)
                {
-                  viewControllerEditCustomer = new ViewControllerEditCustomer(
+                  w13 = new LoginView(
                         this);
                }
-               primaryStage.setScene(viewControllerEditCustomer.getScene());
-               primaryStage.setTitle(viewControllerEditCustomer.getTitle());
-               break;
-            case "SHOW":
-               if (viewControllerEditCustomer == null)
+               else
                {
-                  viewControllerEditCustomer = new ViewControllerEditCustomer(
+                  w13.initialize();
+               }
+               primaryStage.setScene(w13.getScene());
+               primaryStage.setTitle(w13.getTitle());
+               break;
+            case "addadmin":
+               if (w1 == null)
+               {
+                  w1 = new AddAdminView(
                         this);
                }
-               primaryStage.setScene(viewControllerEditCustomer.getScene());
-               primaryStage.setTitle(viewControllerEditCustomer.getTitle());
+               else
+               {
+                  w1.initialize();
+               }
+               primaryStage.setScene(w1.getScene());
+               primaryStage.setTitle(w1.getTitle());
                break;
-            case "ELIST":
-            case "TLIST":
-            case "LOGIN":
-            case "SHOW":
-         }
+            case "logged":
+               if (w2 == null)
+               {
+                  w2 = new LoggedMain(
+                        this);
+               }
+               else
+               {
+                  w2.initialize();
+               }
+               primaryStage.setScene(w2.getScene());
+               primaryStage.setTitle(w2.getTitle());
+               break;
+            } 
          primaryStage.show();
       }
       catch (Exception e)
@@ -138,59 +149,40 @@ public class GUI extends Application implements GuiInterface
    @Override
    public Object[] getInput(String type)
    {
+      /**
+       * Returning the input of an specific window.
+       * @param type
+       *         a string that represents the Id of a window. 
+       * @return the Object array from the window to the id type.
+       */
       switch (currentViewID)
       {
          case "MAIN":
             return mainView.getInput(type);
-         case "SEARCH":
-          return viewControllerEditCustomer.getInput(type);
+         case "login":
+          return w13.getInput(type);
       }
       return null;
    }
 
-   @Override // interface
-   public void showOutput(Object[] output)
-   {
-      if (currentViewControllerID.equals("LIST"))
-      {
-         setWindow("ADD");
-      }
-      viewControllerEditCustomer.showOutput(output);
-   }
-
-   @Override // interface
+   @Override
    public void showError(String error)
    {
-      switch (currentViewControllerID)
+      /**
+       * Displaying an error on an specific window.
+       * @param error
+       *         a string that represents the error. 
+       *
+       */
+      switch (currentViewID)
       {
-         case "LIST":
-            viewControllerCustomers.showError(error);
+         case "main":
+            mainView.showError(error);
             break;
-          case "ADD":
-             viewControllerEditCustomer.showError(error);
+          case "login":
+             w13.showError(error);
           break;
       }
    }
 
-   
-
-   @Override
-   public void remove(ArrayList<Integer> indices)
-   {
-      viewControllerCustomers.remove(indices);
-   }
-
-   @Override
-   public Integer[] confirmRemoving(Integer[] indices)
-   {
-      return viewControllerCustomers.confirmRemoving(indices);
-   }
-   
-   */
-
-   public void setWindow(String string)
-   {
-      // TODO Auto-generated method stub
-      
-   }
 }

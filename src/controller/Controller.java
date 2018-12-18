@@ -1,14 +1,16 @@
 package controller;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
 import model.Date;
 import model.Model;
 import model.WeekSchedule;
 import view.GuiInterface;
 
+/**
+ * A class representing the controller.
+ * @author Marian Claudiu Culea
+ * @version 1.8 - 17/12/2018
+ */
 public class Controller
 {
    
@@ -17,47 +19,36 @@ public class Controller
 
    public Controller(Model model, GuiInterface view)
    {
+      /**
+       * Two-Argument constructor.
+       * @param model
+       *       the model.
+       *       
+       * @param view
+       *       the GuiInterface.
+       */
       this.model = model;
       this.view = view;
    }
    
-   public ArrayList<Object[]> executeGetDayInfo()
-   {
-      ArrayList<Object[]> all = new ArrayList<>();
-      WeekSchedule week= model.getDummyWeekPlan(new Date(12,12,2012));
-      for (int i = 0; i < 5; i++)
-      {
-         Object[] one = new Object[2];
-         one[0] = week.getDay(i).getDate().dayOfWeek();
-         one[1] = model.getTasks();
-         all.add(one);
-      }
-     /* for (int i = 0; i < 5; i++)
-      {
-         Object[] one = new Object[2];
-         one[0] = model.getWeekSchedule().getDay(i).getDate().dayOfWeek();
-         one[1] = model.getTasks();
-        // all.add(one);
-      } */
-      return all;
-   }
-   
-   public int executeGetWeekNumber(LocalDate date)
-   {
-      return model.weekNumber(date);
-   }
 
-   public ArrayList<String[]> executeWeekPlan(Date date) 
+   public ArrayList<Object[]> executeWeekPlan(Date date)
    {
+      /**
+       * Calling the ModelManager for a WeekSchedule on a specific date.
+       * @param date
+       *         the date.
+       * @return the dates of the week and their tasks in a ArrayList of Objects arrays.
+       */
       Date monday=date.copy();
-      ArrayList<String[]> all = new ArrayList<>();
-      String s=monday.weekNumber()+"/"+monday.getYear();
+      ArrayList<Object[]> all = new ArrayList<>();
+      String s="src/"+monday.weekNumber()+"-"+monday.getYear()+".txt";
       try {
       WeekSchedule week = model.getWeekPlan(s);
       for (int i = 0; i < 5; i++)
       {
-         String[] one = new String[2];
-         one[0] = week.getDay(i).getDate().dayOfWeek();
+         Object[] one = new Object[2];
+         one[0] = week.getDay(i).getDate();
          one[1] = week.getDay(i).getTasks().getTasks();
          all.add(one);
       }
@@ -68,8 +59,8 @@ public class Controller
       
       for (int i = 0; i < 5; i++)
       {
-         String[] one = new String[2];
-         one[0] = week.getDay(i).getDate().dayOfWeek();
+         Object[] one = new Object[2];
+         one[0] = week.getDay(i).getDate();
          one[1] = week.getDay(i).getTasks().getTasks();
          all.add(one);
       }
@@ -77,9 +68,26 @@ public class Controller
       return all;
    }
    
-   public void executeLogin() {
-      
+   public void executeLogin(String user, String password)
+   {
+      /**
+       * Calling the validateLogin method in the ModelManager. If the output is true changes scene to MainLogged scene, if not displaying error.
+       * 
+       * @param user
+       *         the username.
+       * @param password
+       *          the password.
+       */
+      boolean result = model.validateLogin(user, password);
+      if (result == false)
+      {
+         view.showError("Incorrect user or password.");
+      }
+      if(result==true) {
+      view.setWindow("logged");
+      }
    }
+
    
    public void executeTasks() {
       
@@ -102,4 +110,5 @@ public class Controller
       // TODO Auto-generated method stub
       
    }
+
 }

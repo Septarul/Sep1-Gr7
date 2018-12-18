@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="426.0" prefWidth="696.0">
          <children>
-            <HBox prefHeight="435.0" prefWidth="138.0">
+            <HBox prefHeight="426.0" prefWidth="147.0">
                <children>
-                  <VBox prefHeight="426.0" prefWidth="140.0">
+                  <VBox prefHeight="426.0" prefWidth="167.0">
                      <children>
                         <Label prefHeight="52.0" prefWidth="139.0" text="Eurofins">
                            <font>
@@ -27,15 +27,15 @@
                            <children>
                               <VBox prefHeight="381.0" prefWidth="138.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#addDaypressed" prefHeight="41.5" prefWidth="136.0" text="Add Day" />
-                                    <Button mnemonicParsing="false" onAction="#addTaskpressed" prefHeight="41.5" prefWidth="136.0" text="Add Task" />
-                                    <Button mnemonicParsing="false" onAction="#addEmplpressed" prefHeight="41.5" prefWidth="136.0" text="Add Employee" />
-                                    <Button fx:id="admin" mnemonicParsing="false" onAction="#addAdminpressed" prefHeight="41.5" prefWidth="136.0" text="Add Administrator" />
-                                    <Button mnemonicParsing="false" onAction="#emplpressed" prefHeight="41.5" prefWidth="136.0" text="Employees List" />
-                                    <Button mnemonicParsing="false" onAction="#taskspressed" prefHeight="41.5" prefWidth="136.0" text="Tasks List" />
-                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showpressed" prefHeight="41.5" prefWidth="136.0" text="Show" />
-                                    <Button mnemonicParsing="false" onAction="#searchpressed" prefHeight="41.5" prefWidth="136.0" text="Search" />
-                                    <Button mnemonicParsing="false" onAction="#logoutpressed" prefHeight="41.5" prefWidth="136.0" text="Log Out" />
+                                    <Button mnemonicParsing="false" onAction="#addDaypressed" prefHeight="41.5" prefWidth="145.0" text="Add Day" />
+                                    <Button mnemonicParsing="false" onAction="#addTaskpressed" prefHeight="41.5" prefWidth="145.0" text="Add Task" />
+                                    <Button mnemonicParsing="false" onAction="#addEmplpressed" prefHeight="41.5" prefWidth="145.0" text="Add Employee" />
+                                    <Button fx:id="admin" mnemonicParsing="false" onAction="#addAdminpressed" prefHeight="41.5" prefWidth="145.0" text="Add Administrator" />
+                                    <Button mnemonicParsing="false" onAction="#emplpressed" prefHeight="41.5" prefWidth="145.0" text="Employees List" />
+                                    <Button mnemonicParsing="false" onAction="#taskspressed" prefHeight="41.5" prefWidth="145.0" text="Tasks List" />
+                                    <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showpressed" prefHeight="41.5" prefWidth="145.0" text="Show" />
+                                    <Button mnemonicParsing="false" onAction="#searchpressed" prefHeight="41.5" prefWidth="145.0" text="Search" />
+                                    <Button mnemonicParsing="false" onAction="#logoutpressed" prefHeight="41.5" prefWidth="145.0" text="Log Out" />
                                  </children>
                               </VBox>
                            </children>
@@ -44,19 +44,19 @@
                   </VBox>
                </children>
             </HBox>
-            <VBox prefHeight="503.0" prefWidth="556.0">
+            <VBox prefHeight="426.0" prefWidth="568.0">
                <children>
-                  <VBox prefHeight="504.0" prefWidth="539.0">
+                  <VBox prefHeight="426.0" prefWidth="586.0">
                      <children>
                         <Pane prefHeight="61.0" prefWidth="554.0">
                            <children>
-                              <DatePicker fx:id="datepicker" layoutX="131.0" layoutY="11.0" onAction="#pickerpressed" prefHeight="30.0" prefWidth="294.0" />
+                              <DatePicker fx:id="picker" layoutX="131.0" layoutY="11.0" onAction="#pickerpressed" prefHeight="30.0" prefWidth="294.0" />
                            </children>
                         </Pane>
                         <TableView fx:id="table" prefHeight="383.0" prefWidth="556.0">
                            <columns>
-                              <TableColumn fx:id="daycolumn" prefWidth="75.0" text="Day" />
-                              <TableColumn fx:id="taskscolumn" prefWidth="480.0" text="Tasks" />
+                              <TableColumn fx:id="daycolumn" prefWidth="122.0" text="Day" />
+                              <TableColumn fx:id="taskscolumn" prefWidth="441.0" text="Tasks" />
                            </columns>
                         </TableView>
                      </children>

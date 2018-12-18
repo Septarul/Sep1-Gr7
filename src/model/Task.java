@@ -31,7 +31,7 @@ public class Task
    {
       return name;
    }
-   
+   //
    public void addEmmployee(Employee employee)
    {
       employees.addEmployee(employee);
@@ -41,17 +41,7 @@ public class Task
    {
       employees.removeEmployee(employee);
    }
-   
-   public boolean equals(Object obj)
-   {
-      if(!(obj instanceof Task))
-      {
-         return false;
-      }
-      Task other = (Task)obj;
-      return name.equals(other.name);
-   }
-   
+     
    public String toString() {
       return name;
    }

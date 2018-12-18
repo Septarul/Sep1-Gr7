@@ -1,12 +1,11 @@
 package model;
 
-public class Administrator extends Employee
+public class Administrator 
 {
       private String user;
       private String password;
       
-      public Administrator(Name name,String user,String password) {
-         super(name);
+      public Administrator(String user,String password) {
          this.user=user;
          this.password=password;
       }

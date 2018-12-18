@@ -265,27 +265,37 @@ public class Date
       }
    }
    
-   public String dayOfWeek() {
-      int q = day;
+   public String dayOfWeek()
+   {
       int m = month;
-      int k = year%100;
-      if(month<3)
+      int y = year;
+      if (month < 3)
       {
-         year=year-1;
+         y--;
+         m += 12;
       }
-      int j = year/100;
-      int h = (q+(13*(m+1)/5)+k+k/4+j/4+5*j)%7;
-      switch(h) {
-         case 0: return "Saturday";
-         case 1: return "Sunday";
-         case 2: return "Monday";
-         case 3: return "Tuesday";
-         case 4: return "Wednesday";
-         case 5: return "Thursday";
-         case 6: return "Friday";
-        default: return "Error";
+      int h = (day + 13 * (m + 1) / 5 + (y % 100) + (y % 100) / 4
+            + (y / 100) / 4 + 5 * (y / 100)) % 7;
+      switch (h)
+      {
+         case 0:
+            return "Saturday";
+         case 1:
+            return "Sunday";
+         case 2:
+            return "Monday";
+         case 3:
+            return "Tuesday";
+         case 4:
+            return "Wednesday";
+         case 5:
+            return "Thursday";
+         case 6:
+            return "Friday";
+         default:
+            return "Error";
       }
-   } 
+   }
    
    public String toString()
    {
