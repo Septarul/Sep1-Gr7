@@ -1,4 +1,5 @@
 package model;
+
 import java.time.LocalDate;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
@@ -6,24 +7,48 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+/**
+ * A class representing a date.
+ * 
+ * @author Marian Claudiu Culea
+ * @version 1.3 - 16/12/2018
+ */
 public class Date
 {
    private int day;
    private int month;
    private int year;
 
+   /**
+    * Three-Argument constructor that sets up the date.
+    * 
+    * @param day
+    *           the day.
+    * @param month
+    *           the month.
+    * @param year
+    *           the year.
+    */
    public Date(int day, int month, int year)
    {
       set(day, month, year);
    }
-   public Date() {
+
+   /**
+    * No Argument constructor that sets up the date as the present date.
+    */
+   public Date()
+   {
       Calendar now = GregorianCalendar.getInstance();
       this.day = now.get(Calendar.DAY_OF_MONTH);
       this.month = now.get(Calendar.MONTH) + 1;
       this.year = now.get(Calendar.YEAR);
 
    }
-   
+   /**
+    * Finding out the week number of the date.
+    * @return the integer representing the week number.
+    */
    public int weekNumber()
    {
       LocalDate date = LocalDate.of(year, month, day);
@@ -32,7 +57,15 @@ public class Date
       int week = Integer.parseInt(String.format("%02d", date.get(weekNum)));
       return week;
    }
-
+/**
+ * Checking if the parameters are valid. And initializing the instance variables.
+ * @param day
+ *       the day.
+ * @param month
+ *          the month.
+ * @param year
+ *          the year.
+ */
    public void set(int day, int month, int year)
    {
       this.day = day;
@@ -60,27 +93,42 @@ public class Date
          this.day = numberOfDaysInMonth();
       }
    }
-
+/**
+ * 
+ * @return the day.
+ */
    public int getDay()
    {
       return day;
    }
-
+   /**
+    * 
+    * @return the month.
+    */
    public int getMonth()
    {
       return month;
    }
-
+   /**
+    * 
+    * @return the year.
+    */
    public int getYear()
    {
       return year;
    }
-
+/**
+ * 
+ * @return If the year is a leap year or not.
+ */
    public boolean isLeapYear()
    {
       return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
    }
-   
+/**
+ *  
+ * @return an integer representing the number of days in the month.
+ */
    public int numberOfDaysInMonth()
    {
       switch (month)
@@ -103,8 +151,10 @@ public class Date
             return 31;
       }
    }
-   
-
+/**
+ * 
+ * @return the name of the month.
+ */
    public String getMonthName()
    {
       switch (month)
@@ -137,6 +187,10 @@ public class Date
             return "Error in month";
       }
    }
+
+   /**
+    * Moving the date forward with one day.
+    */
    public void stepForwardOneDay()
    {
       day++;
@@ -151,47 +205,13 @@ public class Date
          }
       }
    }
-   
-   public void stepBackwardOneDay()
-   {
-      day--;
-      if (day < 1)
-      {
-         month--;
-         day = numberOfDaysInMonth();
-         if (month < 1)
-         {
-            month = 12;
-            year--;
-         }
-      }
-   }
-   
-   public int daysBetween(Date other)
-   {
-      int count = 0;
-      if (isBefore(other))
-      {
-         Date counterDate = this.copy();
 
-         while (!counterDate.equals(other))
-         {
-            counterDate.stepForwardOneDay();
-            count++;
-         }
-      }
-      else
-      {
-         Date counterDate = other.copy();
-
-         while (!counterDate.equals(this))
-         {
-            counterDate.stepForwardOneDay();
-            count++;
-         }
-      }
-      return count;
-   }
+   /**
+    * Checking if the date given as parameter is after this date.
+    * @param other
+    *          the date that gets checked.
+    * @return a boolean variable representing if the param is befor the date or not.
+    */
    public boolean isBefore(Date other)
    {
       if (this.year < other.year)
@@ -219,52 +239,11 @@ public class Date
          return false;
       }
    }
-   
 
-   public int yearsBetween(Date other)
-   {
-      int years = Math.abs(this.year - other.year);
-
-      if (isBefore(other))
-      {
-         if (this.month < other.month)
-         {
-            return years;
-         }
-         if (this.month > other.month)
-         {
-            return years - 1;
-         }
-         if (this.day <= other.day)
-         {
-            return years;
-         }
-         else
-         {
-            return years - 1;
-         }
-      }
-      else
-      {
-         if (other.month < this.month)
-         {
-            return years;
-         }
-         if (other.month > this.month)
-         {
-            return years - 1;
-         }
-         if (other.day <= this.day)
-         {
-            return years;
-         }
-         else
-         {
-            return years - 1;
-         }
-      }
-   }
-   
+   /**
+    * Transforms a date to a string representing the name of the day.
+    * @return a string representing the name of the day.
+    */
    public String dayOfWeek()
    {
       int m = month;
@@ -296,7 +275,11 @@ public class Date
             return "Error";
       }
    }
-   
+
+   /**
+    * Converting the date to a string.
+    * @return a string with the date.
+    */
    public String toString()
    {
       String s = day + "/";
@@ -304,20 +287,29 @@ public class Date
       s += year;
       return s;
    }
-   
+
+   /**
+    * Checking if the object given as the parameter is the same as the date.
+    * @return a boolean variable representing if the object is the same as the date.
+    */
    public boolean equals(Object obj)
    {
-      if(!(obj instanceof Date))
+      if (!(obj instanceof Date))
       {
          return false;
       }
-      Date other = (Date)obj;
-      return day==other.day && month==other.month&& year==other.year;   
+      Date other = (Date) obj;
+      return day == other.day && month == other.month && year == other.year;
    }
-   
-   public Date copy() {
+
+   /**
+    * Creating a copy for the date.
+    * @return the copy.
+    */
+   public Date copy()
+   {
       Date other = new Date(day, month, year);
       return other;
    }
-   
+
 }

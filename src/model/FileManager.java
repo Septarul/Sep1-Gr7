@@ -6,23 +6,46 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * A class representing the class that reads and saves to files.
+ * 
+ * @author Radu Candea
+ * @version 1.3 - 16/12/2018
+ */
 public class FileManager implements FileManagerInterface
 {
-
-   public ArrayList<Administrator> loadAdmins(String filename) throws Exception{
+   /**
+    * Reading the admin file and creating an array list with the data.
+    * 
+    * @param filename
+    *           the name of the file.
+    * @return the array list with all the admins.
+    * @throws Exception if file is not found.
+    */
+   public ArrayList<Administrator> loadAdmins(String filename) throws Exception
+   {
       File file = new File(filename);
       Scanner in = new Scanner(file);
       ArrayList<Administrator> list = new ArrayList<>();
       while (in.hasNext())
       {
          String line = in.nextLine();
-         String[] token=line.split(",");
-         Administrator ad= new Administrator(token[0],token[1]);
+         String[] token = line.split(",");
+         Administrator ad = new Administrator(token[0], token[1]);
          list.add(ad);
       }
       in.close();
       return list;
    }
+
+   /**
+    * Reading the tasks from the file and creating a task list with the data.
+    * 
+    * @param filename
+    *           the name of the file.
+    * @return the task list all the admins.
+    * @throws Exception if file is not found.
+    */
    public TaskList loadTaskListFromFile(String filename) throws Exception
    {
       File file = new File(filename);
@@ -38,8 +61,20 @@ public class FileManager implements FileManagerInterface
       return list;
    }
 
-   public EmployeeList loadEmployeeListFromFile(String filename, TaskList list) throws Exception
-         
+   /**
+    * Reading the file with all the employees. Assigning them the correct
+    * training for each task in the task list.
+    * 
+    * @param filename
+    *           the name of the file.
+    * @param list
+    *           the list with all the files.
+    * @returns the employee list.
+    * @throws Exception if file is not found.
+    */
+   public EmployeeList loadEmployeeListFromFile(String filename, TaskList list)
+         throws Exception
+
    {
       File file = new File(filename);
       Scanner in = new Scanner(file);
@@ -95,7 +130,19 @@ public class FileManager implements FileManagerInterface
       return list1;
    }
 
-   public WeekSchedule loadWeekFromFile(String filename, EmployeeList list1) throws Exception    
+   /**
+    * Reading the file with a week schedule. Assigning the employees already
+    * created to the tasks in the week.
+    * 
+    * @param filename
+    *           the name of the file.
+    * @param list1
+    *           the list with all the employees.
+    * @returns the week schedule.
+    * @throws Exception if file is not found.
+    */
+   public WeekSchedule loadWeekFromFile(String filename, EmployeeList list1)
+         throws Exception
    {
       File file = new File(filename);
       Scanner in = new Scanner(file);
@@ -118,9 +165,8 @@ public class FileManager implements FileManagerInterface
             for (int j = 1; j < day.length; j++)
             {
                String[] names = day[j].split("/");
-               Name sal=new Name(names[0],names[1]);
-               emps.addEmployee(
-                    list1.getEmployeeByName(sal));
+               Name sal = new Name(names[0], names[1]);
+               emps.addEmployee(list1.getEmployeeByName(sal));
             }
             t1.setEmployees(emps);
             tasks.addTask(t1);
@@ -131,40 +177,75 @@ public class FileManager implements FileManagerInterface
       in.close();
       return list3;
    }
-   
-   public void saveAdmins(String filename) {
-      
-   }
-   
-   public void saveWeekToFile(String filename,WeekSchedule list3) throws FileNotFoundException {
-   File file = new File(filename);
-   PrintWriter out = new PrintWriter(file);
-   String date ="";
-   String task ="";
-   for (int i = 0; i < list3.size(); i++)
+
+   /**
+    * Saving the admin info to a file.
+    * 
+    * @param filename
+    *           the name of the file.
+    * @param list
+    *           the list with the admins.
+    * @throws Exception if file is not found.
+    */
+   public void saveAdmins(String filename, ArrayList<Administrator> list)
+         throws Exception
    {
-      date = list3.getDay(i).getDate().getDay() + ":"
-            + list3.getDay(i).getDate().getMonth() + ":"
-            + list3.getDay(i).getDate().getYear();
-      for (int j = 0; j < list3.getDay(i).getTasks().size(); j++)
+
+   }
+
+   /**
+    * Saving the week schedule info to a file.
+    * 
+    * @param filename
+    *           the name of the file.
+    * @param list3
+    *           the week schedule object.
+    * @throws FileNotFoundException if file is not found.
+    */
+   public void saveWeekToFile(String filename, WeekSchedule list3)
+         throws FileNotFoundException
+   {
+      File file = new File(filename);
+      PrintWriter out = new PrintWriter(file);
+      String date = "";
+      String task = "";
+      for (int i = 0; i < list3.size(); i++)
       {
-         String empl="";
-         for (int t = 0; t < list3.getDay(i).getTasks().get(j).getEmployees().size(); t++)
+         date = list3.getDay(i).getDate().getDay() + ":"
+               + list3.getDay(i).getDate().getMonth() + ":"
+               + list3.getDay(i).getDate().getYear();
+         for (int j = 0; j < list3.getDay(i).getTasks().size(); j++)
          {
-            System.out.println(list3.getDay(i).getTasks().get(j).getEmployees());
-            empl+=list3.getDay(i).getTasks().get(j).getEmployees().get(t).getName().getFirstName()+"/"+list3.getDay(i).getTasks().get(j).getEmployees().get(t).getName().getLastName()+",";
+            String empl = "";
+            for (int t = 0; t < list3.getDay(i).getTasks().get(j).getEmployees()
+                  .size(); t++)
+            {
+               System.out
+                     .println(list3.getDay(i).getTasks().get(j).getEmployees());
+               empl += list3.getDay(i).getTasks().get(j).getEmployees().get(t)
+                     .getName().getFirstName() + "/"
+                     + list3.getDay(i).getTasks().get(j).getEmployees().get(t)
+                           .getName().getLastName()
+                     + ",";
+            }
+            task = list3.getDay(i).getTasks().get(j).getName() + "," + empl;
          }
-         task=list3.getDay(i).getTasks().get(j).getName()+","+empl;
+         out.println(date + ";" + task);
       }
-      out.println(date+";"+task);
+      out.close();
    }
-   out.close();
-   }
-   
-   
-   
-   @Override
-   public void saveTasksToFile(TaskList list, String filename) throws FileNotFoundException
+
+   /**
+    * Saving the task list info to a file.
+    * 
+    * @param filename
+    *           the name of the file.
+    * @param list
+    *           the list with all the tasks.
+    * @throws FileNotFoundException if file is not found.
+    */
+   public void saveTasksToFile(TaskList list, String filename)
+         throws FileNotFoundException
    {
       String[] tasks = new String[list.size()];
       for (int i = 0; i < list.size(); i++)
@@ -180,8 +261,18 @@ public class FileManager implements FileManagerInterface
       out.close();
    }
 
-   public void saveEmployeesToFile(EmployeeList list1, String filename) throws FileNotFoundException
-         
+   /**
+    * Saving the task list info to a file.
+    * 
+    * @param filename
+    *           the name of the file.
+    * @param list1
+    *           the list with all the employees.
+    * @throws FileNotFoundException if file is not found.
+    */
+   public void saveEmployeesToFile(EmployeeList list1, String filename)
+         throws FileNotFoundException
+
    {
       File file = new File(filename);
       PrintWriter out = new PrintWriter(file);
