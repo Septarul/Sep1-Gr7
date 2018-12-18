@@ -16,30 +16,30 @@ public class Controller
    
    private Model model;
    private GuiInterface view;
-
+   /**
+    * Two-Argument constructor.
+    * @param model
+    *       the model.
+    *       
+    * @param view
+    *       the GuiInterface.
+    */
    public Controller(Model model, GuiInterface view)
    {
-      /**
-       * Two-Argument constructor.
-       * @param model
-       *       the model.
-       *       
-       * @param view
-       *       the GuiInterface.
-       */
+      
       this.model = model;
       this.view = view;
    }
    
-
+   /**
+    * Calling the ModelManager for a WeekSchedule on a specific date.
+    * @param date
+    *         the date.
+    * @return the dates of the week and their tasks in a ArrayList of Objects arrays.
+    */
    public ArrayList<Object[]> executeWeekPlan(Date date)
    {
-      /**
-       * Calling the ModelManager for a WeekSchedule on a specific date.
-       * @param date
-       *         the date.
-       * @return the dates of the week and their tasks in a ArrayList of Objects arrays.
-       */
+      
       Date monday=date.copy();
       ArrayList<Object[]> all = new ArrayList<>();
       String s="src/"+monday.weekNumber()+"-"+monday.getYear()+".txt";
@@ -67,17 +67,17 @@ public class Controller
       }
       return all;
    }
-   
+   /**
+    * Calling the validateLogin method in the ModelManager. If the output is true changes scene to MainLogged scene, if not displaying error.
+    * 
+    * @param user
+    *         the user name.
+    * @param password
+    *          the password.
+    */
    public void executeLogin(String user, String password)
    {
-      /**
-       * Calling the validateLogin method in the ModelManager. If the output is true changes scene to MainLogged scene, if not displaying error.
-       * 
-       * @param user
-       *         the username.
-       * @param password
-       *          the password.
-       */
+      
       boolean result = model.validateLogin(user, password);
       if (result == false)
       {
@@ -107,7 +107,7 @@ public class Controller
 
    public void executeAddAdmin()
    {
-      // TODO Auto-generated method stub
+      
       
    }
 

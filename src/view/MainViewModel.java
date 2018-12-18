@@ -15,55 +15,63 @@ public class MainViewModel
    private StringProperty dayProperty;
    private StringProperty tasksProperty;
    private Date date;
-
+   /**
+    * Two-Argument constructor.Using the dayOfWeek method to initialize the
+    * dayProperty.
+    * @param day
+    *          a string representing the date of the day
+    * @param tasks
+    *          a String representing the tasks for that day
+    */
    public MainViewModel(Date day, String tasks)
    {
-      /**
-       * Two-Argument constructor.Using the dayOfWeek method to initialize the
-       * dayProperty.
-       */
+      
       this.date = day;
       dayProperty = new SimpleStringProperty(day.dayOfWeek());
       tasksProperty = new SimpleStringProperty(tasks);
    }
-
+/**
+ * getter for the date
+ * @return the date
+ */
    public Date getDate()
    {
-      /**
-       * Returning the date.
-       */
+      
       return date;
    }
-
+/**
+ * getter for the day
+ * @return the day
+ */
    public String getDay()
    {
-      /**
-       * Returning the value of dayProperty.
-       */
+      
       return dayProperty.getValue();
    }
-
+/**
+ * getter for the tasks in a day
+ * @return the tasks
+ */
    public String getTasks()
    {
-      /**
-       * Returning the value of tasksProperty.
-       */
+      
       return tasksProperty.getValue();
    }
-
+/**
+ * getter for the dayProperty
+ * @return the day property
+ */
    public StringProperty getDayProperty()
    {
-      /**
-       * Returning the dayPropery.
-       */
       return dayProperty;
    }
-
+/**
+ * getter for the tasks
+ * @return the tasks property
+ */
    public StringProperty getTasksProperty()
    {
-      /**
-       * Returning the tasksProperty.
-       */
+      
       return tasksProperty;
    }
 

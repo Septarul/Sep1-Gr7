@@ -2,7 +2,11 @@ package view;
 
 import controller.Controller;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * @author Radu Candea
+ * @version 3.1 - 17/12/2018
+ */
 public interface GuiInterface
 {
 

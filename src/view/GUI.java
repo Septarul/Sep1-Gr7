@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 /**
  * A class representing the GUI.
+ * 
  * @author Marian Claudiu Culea
  * @version 1.5 - 17/12/2018
  */
@@ -27,15 +28,15 @@ public class GUI extends Application implements GuiInterface
          me = this;
       }
    }
-
+   /**
+    * Launches the GUI giving it a controller.
+    * @param controller
+    *          the controller.
+    */
    @Override 
    public void start(Controller controller)
    {
-      /**
-       * Launches the GUI giving it a controller.
-       * @param controller
-       *          the controller.
-       */
+      
       this.controller = controller;
 
       new Thread(new Runnable()
@@ -47,14 +48,14 @@ public class GUI extends Application implements GuiInterface
       }).start();
    }
 
-   
+   /**
+    * Giving the GUI a primary stage.
+    * @param primaryStage
+    *          the stage that will be displaying.
+    */
    public void start(Stage primaryStage)
    {
-      /**
-       * Giving the GUI a primary stage.
-       * @param primaryStage
-       *          the stage that will be displaying.
-       */
+      
       if (this != me)
       {
          me.start(primaryStage);
@@ -66,22 +67,25 @@ public class GUI extends Application implements GuiInterface
       primaryStage.setTitle(mainView.getTitle());
       primaryStage.show();
    }
-   
+   /**
+    * getter method for the controller
+    * 
+    * @return returns the controller.
+    */
    public Controller getController()
    {
-      /**
-       * Returns the controller.
-       */
+      
       return controller;
    }
-
+   /**
+    * Changing the primary to the specified stage.
+    * 
+    * @param type
+    *         a string that represents the Id of a window. 
+    */
    public void setWindow(String type)
    {
-      /**
-       * Changing the primary to the specified stage.
-       * @param type
-       *         a string that represents the Id of a window. 
-       */
+      
       this.currentViewID = type;
       try
       {
@@ -145,16 +149,17 @@ public class GUI extends Application implements GuiInterface
       {
       }
    }
-
+   /**
+    * Returning the input of an specific window.
+    * 
+    * @param type
+    *         a string that represents the Id of a window. 
+    * @return the Object array from the window to the id type.
+    */
    @Override
    public Object[] getInput(String type)
    {
-      /**
-       * Returning the input of an specific window.
-       * @param type
-       *         a string that represents the Id of a window. 
-       * @return the Object array from the window to the id type.
-       */
+      
       switch (currentViewID)
       {
          case "MAIN":
@@ -164,16 +169,16 @@ public class GUI extends Application implements GuiInterface
       }
       return null;
    }
-
+   /**
+    * Displaying an error on an specific window.
+    * 
+    * @param error
+    *         a string that represents the error. 
+    */
    @Override
    public void showError(String error)
    {
-      /**
-       * Displaying an error on an specific window.
-       * @param error
-       *         a string that represents the error. 
-       *
-       */
+      
       switch (currentViewID)
       {
          case "main":

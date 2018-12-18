@@ -27,15 +27,15 @@ public class AddAdminView
    private String title;
    private Scene scene;
    private GUI gui;
-
+   /**
+    * One-argument constructor. Setting up the scene and title.
+    * 
+    * @param gui
+    *           The gui.
+    */
    public AddAdminView(GUI gui)
    {
-      /**
-       * One-argument constructor. Setting up the scene and title.
-       * 
-       * @param gui
-       *           The gui.
-       */
+      
       try
       {
          this.gui = gui;
@@ -51,59 +51,61 @@ public class AddAdminView
          e.printStackTrace();
       }
    }
-
+   /**
+    * getter for the scene
+    * @return the scene.
+    */
    public Scene getScene()
    {
-      /**
-       * Returns the scene.
-       */
+      
       return scene;
    }
-
+   /**
+    * getter for the title
+    * @return the title.
+    */
    public String getTitle()
    {
-      /**
-       * Returns the title.
-       */
+      
       return title;
    }
-
+   /**
+    * Initializing the fields to be empty.
+    */
    public void initialize()
    {
-      /**
-       * Initializing the fields to be empty.
-       */
+      
       username.setText("");
       password.setText("");
       error.setText("");
    }
-
+   /**
+    * Returns the user to the MainLoggedView.
+    */
    @FXML
    public void cancelpressed()
    {
-      /**
-       * Returns the user to the MainLoggedView.
-       */
+      
       gui.setWindow("logged");
    }
-
+   /**
+    * Adds the admin to the admin list in the ModelManager.
+    */
    @FXML
    public void addpressed()
    {
-      /**
-       * Adds the admin to the admin list in the ModelManager.
-       */
+      
 
    }
-
+   /**
+    * Displays an error on the screen.
+    * 
+    * @param error1
+    *           the error that is displaying.
+    */
    public void showError(String error1)
    {
-      /**
-       * Displays an error on the screen.
-       * 
-       * @param error
-       *           the error that is displaying.
-       */
+      
       error.setText(error1);
    }
 
