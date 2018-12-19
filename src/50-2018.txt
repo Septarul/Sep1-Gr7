@@ -1,5 +1,5 @@
-17:12:2018;Milk,Henrik/Moraru,Radu/Candea,Marian/Culea;Feed,Albert/Cumva,Ignas/Porter
-18:12:2018;Food,Ghita/Adi,Bulgaru/Arabu;Milk,Radu/Candea,Marian/Culea
-19:12:2018;Feed,Ignas/Porter,Marian/Culea;Feed,Henrik/Moraru
-20:12:2018;Milk,Radu/Candea,Henrik/Moraru;Feed,Albert/Cumva,Marian/Culea
-21:12:2018;Milk,Albert/Cumva,Radu/Candea,Marian/Culea,Ignas/Porter;Feed,Ignas/Porter,Henrik/Moraru
+10:12:2018;Food,Henrik/Moraru,Radu/Candea,Marian/Culea;Feed,Albert/Cumva,Ignas/Porter
+11:12:2018;Milk,Ghita/Adi,Bulgaru/Arabu;Food,Radu/Candea,Marian/Culea
+12:12:2018;Feed,Ignas/Porter,Marian/Culea;Milk,Henrik/Moraru
+13:12:2018;Milk,Radu/Candea,Henrik/Moraru;Feed,Albert/Cumva,Marian/Culea
+14:12:2018;Milk,Albert/Cumva,Radu/Candea,Marian/Culea,Ignas/Porter;Food,Ignas/Porter,Henrik/Moraru
